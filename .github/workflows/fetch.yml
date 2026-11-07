@@ -1,0 +1,153 @@
+name: fetch-sources
+
+# Authoritative source download for the TII published-TPN case evaluation.
+#
+# Every published model / benchmark / tool binary is downloaded HERE, inside
+# GitHub Actions, from its official URL.  The job records for every file:
+# full URL, UTC timestamps, HTTP status (plus redirect chain), exact byte
+# count, SHA-256, curl exit code and a raw `curl --verbose` download log.
+# The bundle is uploaded as artifact `source-bundle` and the GHA SHA-256 is
+# compared with the hashes committed in sources/local_sha256.txt.
+#
+# This workflow is both dispatchable (`gh workflow run fetch-sources`) and
+# reusable (`uses: ./.github/workflows/fetch.yml` from evaluate.yml, where the
+# artifact it uploads is consumed by the downstream jobs).
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fetch-sources-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  fetch:
+    name: Fetch authoritative sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Record runner environment
+        run: |
+          set -euo pipefail
+          mkdir -p fetched
+          {
+            echo "# fetch-sources runner environment"
+            echo "utc: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "run_id: ${{ github.run_id }}"
+            echo "run_attempt: ${{ github.run_attempt }}"
+            echo "workflow: ${{ github.workflow }}"
+            echo "ref: ${{ github.ref }}"
+            echo "commit_sha: $(git rev-parse HEAD)"
+            echo "runner_os: ${{ runner.os }}"
+            echo "runner_arch: ${{ runner.arch }}"
+            echo "--- uname -a ---"
+            uname -a
+            echo "--- python3 --version ---"
+            python3 --version
+            echo "--- curl --version ---"
+            curl --version | head -1
+            echo "--- tar --version ---"
+            tar --version | head -1
+            echo "--- sha256sum --version ---"
+            sha256sum --version | head -1
+          } | tee fetched/environment.txt
+
+      - name: Fetch sources with curl, record metadata and SHA-256
+        id: fetch
+        run: |
+          set -o pipefail
+          python3 tools/fetch_sources.py \
+            --out-dir fetched \
+            --expected sources/local_sha256.txt
+
+      - name: Show download log and hash comparison
+        if: always()
+        run: |
+          set -euo pipefail
+          echo "::group::download_log.txt"
+          if [ -f fetched/download_log.txt ]; then cat fetched/download_log.txt; else echo "download_log.txt absent"; fi
+          echo "::endgroup::"
+          echo "::group::download_log.json"
+          if [ -f fetched/download_log.json ]; then cat fetched/download_log.json; else echo "download_log.json absent"; fi
+          echo "::endgroup::"
+          echo "::group::comparison.json"
+          if [ -f fetched/comparison.json ]; then cat fetched/comparison.json; else echo "comparison.json absent"; fi
+          echo "::endgroup::"
+          echo "::group::SHA256SUMS"
+          if [ -f fetched/SHA256SUMS ]; then cat fetched/SHA256SUMS; else echo "SHA256SUMS absent"; fi
+          echo "::endgroup::"
+
+      - name: Verify SHA256SUMS and inspect TINA archive
+        if: always()
+        run: |
+          set -uo pipefail
+          if [ -f fetched/SHA256SUMS ]; then
+            echo "::group::sha256sum -c SHA256SUMS"
+            ( cd fetched && sha256sum -c SHA256SUMS )
+            echo "::endgroup::"
+          fi
+          TINA=fetched/tina-4.0.0-amd64-linux.tgz
+          if [ -f "$TINA" ]; then
+            echo "::group::TINA archive metadata"
+            file "$TINA"
+            ls -l "$TINA"
+            sha256sum "$TINA"
+            echo "--- tar tzf (first 60 entries) ---"
+            tar tzf "$TINA" 2>&1 | head -60 || true
+            echo "::endgroup::"
+          else
+            echo "TINA archive absent"
+          fi
+
+      - name: Append fetch evidence to job summary
+        if: always()
+        run: |
+          set -uo pipefail
+          {
+            echo "## fetch-sources"
+            echo ""
+            echo "run: [${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+            echo "commit: \`$(git rev-parse HEAD)\`"
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ -f fetched/step_summary.md ]; then
+            cat fetched/step_summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f fetched/download_log.txt ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "<details><summary>download log</summary>" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            cat fetched/download_log.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            echo "</details>" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload artifact source-bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-bundle
+          path: fetched/
+          if-no-files-found: warn
+          retention-days: 90
+
+      - name: Verify artifact contents
+        if: always()
+        run: |
+          set -uo pipefail
+          echo "::group::source-bundle contents"
+          find fetched -type f -printf '%s  %p\n' 2>/dev/null | sort -k2 || find fetched -type f | xargs ls -l
+          echo "::endgroup::"
