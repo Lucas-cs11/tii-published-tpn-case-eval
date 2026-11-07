@@ -2,16 +2,22 @@
  "schema": "tii-tpn-gha-runs/1",
  "repository": "Lucas-cs11/tii-published-tpn-case-eval",
  "authoritative_run": {
-  "run_id": 42334097699,
+  "run_id": 42334373373,
   "event": "push",
-  "head_sha": "da062604b693fc93763c8192cb43062bf6046767",
-  "url": "https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334097699",
+  "head_sha": "cae639d507ea",
+  "url": "https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334373373",
   "conclusion": "success",
-  "jobs": {"fetch": "success", "verify": "success", "package": "success", "publish-evidence": "success"},
+  "jobs": {
+   "fetch": "success",
+   "verify": "success",
+   "package": "success",
+   "publish-evidence": "success"
+  },
   "verification_verdict": "PASS",
   "sections_passed": 10,
   "sections_failed": 0,
-  "evidence_dir": "sources/gha_evidence/"
+  "evidence_dir": "sources/gha_evidence/",
+  "note": "final run; models regenerated with the authoritative GHA download provenance"
  },
  "smoke_run_fetch_only": {
   "run_id": 42331826007,
@@ -27,5 +33,10 @@
   "conclusion": "failure",
   "note": "verify and package succeeded; publish-evidence push was rejected as non-fast-forward because 42334097699 had already published the same evidence commit. Superseded."
  },
- "sandbox_note": "Large GHA artifacts cannot be downloaded in the local agent sandbox (objects host blocked); the runner commits the small authoritative download evidence to sources/gha_evidence/ instead."
+ "sandbox_note": "Large GHA artifacts cannot be downloaded in the local agent sandbox (objects host blocked); the runner commits the small authoritative download evidence to sources/gha_evidence/ instead.",
+ "earlier_full_run": {
+  "run_id": 42334097699,
+  "conclusion": "success",
+  "note": "first fully green run; superseded by 42334373373"
+ }
 }

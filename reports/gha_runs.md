@@ -1,7 +1,7 @@
 | run id | UTC | commit | URL | jobs | verdict |
 |---|---|---|---|---|---|
 | 42331826007 | 2026-11-07T02:59:05Z | `ba6be43` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42331826007 | fetch only (workflow_dispatch smoke run) | PASS |
-| 42334097699 | 2026-11-07T03:28:07Z | `da06260` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334097699 | fetch, verify, package, publish-evidence | **PASS (authoritative)** |
+| 42334097699 (earlier full run) | 2026-11-07T03:28:07Z | `da06260` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334097699 | fetch, verify, package, publish-evidence | **PASS (authoritative)** |
 | 42334101053 | 2026-11-07T03:27:34Z | `da06260` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334101053 | fetch, verify, package succeeded; publish-evidence push rejected (superseded by 42334097699, which published the same evidence) | PASS (verify/package) |
 | (final run) | — | this commit | — | triggered by the final commit; records the authoritative-provenance models | see `reports/GHA_RUNS.json` |
 
@@ -23,4 +23,4 @@ Authoritative download facts (from `sources/gha_evidence/download_log.json`):
   bytes; recorded with hashes (NO_REFERENCE).
 * tina-4.0.0-amd64-linux.tgz — HTTP 200, 26,065,306 bytes; SHA-256 in
   `sources/gha_evidence/SHA256SUMS`; executes TINA 4.0.0 on Linux.
-| 42334373373 | 2026-11-07T03:31:54Z | `cae639d507ea` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334373373 | PASS |
+| **42334373373 (final, authoritative)** | 2026-11-07T03:31:54Z | `cae639d507ea` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334373373 | PASS |
