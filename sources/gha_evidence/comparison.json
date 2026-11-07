@@ -1,0 +1,61 @@
+{
+  "generated_utc": "2026-11-07T03:27:38Z",
+  "reference_file": "sources/local_sha256.txt",
+  "reference_file_sha256": "025b72002f539ecb41c9283ae467c2e37990f71c312c2d123377a4c8a9f37cc0",
+  "all_reference_hashes_match": true,
+  "match_count": 2,
+  "mismatch_count": 0,
+  "download_failed_count": 0,
+  "missing_reference_count": 0,
+  "mismatches": [],
+  "download_failures": [],
+  "missing_reference": [],
+  "no_reference": [
+    "ChenFig6_111_init.txt",
+    "ChenFig6_111_matrix.txt",
+    "tina-4.0.0-amd64-linux.tgz"
+  ],
+  "unverified_reference_entries": [],
+  "entries": [
+    {
+      "name": "wangTAC.net",
+      "status": "MATCH",
+      "expected_sha256": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f",
+      "actual_sha256": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f",
+      "bytes": 217,
+      "http_status": 200
+    },
+    {
+      "name": "basileTAC.net",
+      "status": "MATCH",
+      "expected_sha256": "4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a",
+      "actual_sha256": "4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a",
+      "bytes": 203,
+      "http_status": 200
+    },
+    {
+      "name": "ChenFig6_111_init.txt",
+      "status": "NO_REFERENCE",
+      "expected_sha256": null,
+      "actual_sha256": "21872fe80097f754a61c5af893ca4f3654e3c227c71c5c11f2756f1f4aa6acbd",
+      "bytes": 173,
+      "http_status": 200
+    },
+    {
+      "name": "ChenFig6_111_matrix.txt",
+      "status": "NO_REFERENCE",
+      "expected_sha256": null,
+      "actual_sha256": "454441476dc5874d2a848a3ce9ceb417c4b6d1334cf12edd7ab444d80ab9404d",
+      "bytes": 1234,
+      "http_status": 200
+    },
+    {
+      "name": "tina-4.0.0-amd64-linux.tgz",
+      "status": "NO_REFERENCE",
+      "expected_sha256": null,
+      "actual_sha256": "5e1cbd7c2e043419037a3d265914042fde795563094f38ddd88b42444d4afa8c",
+      "bytes": 26065306,
+      "http_status": 200
+    }
+  ]
+}

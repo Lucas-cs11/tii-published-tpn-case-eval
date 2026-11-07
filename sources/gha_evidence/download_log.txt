@@ -1,0 +1,23 @@
+===== authoritative source fetch =====
+generated UTC     : 2026-11-07T03:27:38Z
+runner            : Linux-7.0.0-1019-azure-x86_64-with-glibc2.43
+python            : 3.14.4
+curl 8.18.0 (x86_64-pc-linux-gnu) libcurl/8.18.0 OpenSSL/3.5.5 zlib/1.3.1 brotli/1.2.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.68.0 librtmp/2.3 mit-krb5/1.22.1 OpenLDAP/2.6.10
+curl backend      : curl
+
+file                                    HTTP      bytes sha256                                                          
+------------------------------------------------------------------------------------------------------------------------
+wangTAC.net                              200        217 9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f
+basileTAC.net                            200        203 4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a
+ChenFig6_111_init.txt                    200        173 21872fe80097f754a61c5af893ca4f3654e3c227c71c5c11f2756f1f4aa6acbd
+ChenFig6_111_matrix.txt                  200       1234 454441476dc5874d2a848a3ce9ceb417c4b6d1334cf12edd7ab444d80ab9404d
+tina-4.0.0-amd64-linux.tgz               200   26065306 5e1cbd7c2e043419037a3d265914042fde795563094f38ddd88b42444d4afa8c
+
+===== SHA-256 comparison with committed reference =====
+wangTAC.net                            MATCH            expected=9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f actual=9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f
+basileTAC.net                          MATCH            expected=4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a actual=4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a
+ChenFig6_111_init.txt                  NO_REFERENCE     expected=- actual=21872fe80097f754a61c5af893ca4f3654e3c227c71c5c11f2756f1f4aa6acbd
+ChenFig6_111_matrix.txt                NO_REFERENCE     expected=- actual=454441476dc5874d2a848a3ce9ceb417c4b6d1334cf12edd7ab444d80ab9404d
+tina-4.0.0-amd64-linux.tgz             NO_REFERENCE     expected=- actual=5e1cbd7c2e043419037a3d265914042fde795563094f38ddd88b42444d4afa8c
+
+all_reference_hashes_match = True

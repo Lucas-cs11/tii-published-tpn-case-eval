@@ -1,0 +1,170 @@
+{
+  "schema": "tii-tpn-download-log/1",
+  "generated_utc": "2026-11-07T03:27:38Z",
+  "tool": "tools/fetch_sources.py",
+  "backend": "curl",
+  "python": "3.14.4",
+  "curl_version": "curl 8.18.0 (x86_64-pc-linux-gnu) libcurl/8.18.0 OpenSSL/3.5.5 zlib/1.3.1 brotli/1.2.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.68.0 librtmp/2.3 mit-krb5/1.22.1 OpenLDAP/2.6.10",
+  "user_agent": "tii-published-tpn-case-eval/1.0 (+https://github.com/Lucas-cs11/tii-published-tpn-case-eval; GitHub Actions)",
+  "runner": {
+    "os": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.43",
+    "github_repository": "Lucas-cs11/tii-published-tpn-case-eval",
+    "github_workflow": "evaluate",
+    "github_job": "fetch",
+    "github_run_id": "42334097699",
+    "github_run_attempt": "1",
+    "github_sha": "da062604b693fc93763c8192cb43062bf6046767",
+    "github_ref": "refs/heads/main",
+    "github_actor": "Lucas-cs11",
+    "runner_name": "GitHub Actions 1000001865",
+    "runner_os": "Linux",
+    "runner_arch": "X64"
+  },
+  "reference_file": {
+    "path": "sources/local_sha256.txt",
+    "sha256": "025b72002f539ecb41c9283ae467c2e37990f71c312c2d123377a4c8a9f37cc0",
+    "entries": {
+      "basileTAC.net": "4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a",
+      "wangTAC.net": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f"
+    }
+  },
+  "sources": [
+    {
+      "name": "wangTAC.net",
+      "role": "published TPN, Wang/Mahulea/Silva TAC 2015 - firing-domain reference",
+      "url": "https://projects.laas.fr/twina/files/wangTAC.net",
+      "final_url": "https://projects.laas.fr/twina/files/wangTAC.net",
+      "utc_started": "2026-11-07T03:27:36Z",
+      "utc_finished": "2026-11-07T03:27:36Z",
+      "http_status": 200,
+      "redirect_chain": [
+        {
+          "status": "200",
+          "location": null
+        }
+      ],
+      "bytes": 217,
+      "sha256": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f",
+      "content_type": null,
+      "curl_exit_code": 0,
+      "curl_timeout": false,
+      "curl_error": null,
+      "content_sanity_ok": true,
+      "content_sanity_note": "TINA .net syntax header present",
+      "saved_as": "wangTAC.net",
+      "raw_log": "raw_logs/wangTAC.net.curl.log",
+      "headers_log": "raw_logs/wangTAC.net.headers.txt",
+      "download_ok": true
+    },
+    {
+      "name": "basileTAC.net",
+      "role": "published TPN, Basile/Cabasino/Seatzu TAC 2015 - SCG reference",
+      "url": "https://projects.laas.fr/twina/files/basileTAC.net",
+      "final_url": "https://projects.laas.fr/twina/files/basileTAC.net",
+      "utc_started": "2026-11-07T03:27:36Z",
+      "utc_finished": "2026-11-07T03:27:36Z",
+      "http_status": 200,
+      "redirect_chain": [
+        {
+          "status": "200",
+          "location": null
+        }
+      ],
+      "bytes": 203,
+      "sha256": "4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a",
+      "content_type": null,
+      "curl_exit_code": 0,
+      "curl_timeout": false,
+      "curl_error": null,
+      "content_sanity_ok": true,
+      "content_sanity_note": "TINA .net syntax header present",
+      "saved_as": "basileTAC.net",
+      "raw_log": "raw_logs/basileTAC.net.curl.log",
+      "headers_log": "raw_logs/basileTAC.net.headers.txt",
+      "download_ok": true
+    },
+    {
+      "name": "ChenFig6_111_init.txt",
+      "role": "JAS 2026 Fig. 6 manufacturing benchmark, initial marking (author repository)",
+      "url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_init.txt",
+      "final_url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_init.txt",
+      "utc_started": "2026-11-07T03:27:36Z",
+      "utc_finished": "2026-11-07T03:27:36Z",
+      "http_status": 200,
+      "redirect_chain": [
+        {
+          "status": "200",
+          "location": null
+        }
+      ],
+      "bytes": 173,
+      "sha256": "21872fe80097f754a61c5af893ca4f3654e3c227c71c5c11f2756f1f4aa6acbd",
+      "content_type": "text/plain; charset=utf-8",
+      "curl_exit_code": 0,
+      "curl_timeout": false,
+      "curl_error": null,
+      "content_sanity_ok": true,
+      "content_sanity_note": "ASCII numeric matrix/marking data",
+      "saved_as": "ChenFig6_111_init.txt",
+      "raw_log": "raw_logs/ChenFig6_111_init.txt.curl.log",
+      "headers_log": "raw_logs/ChenFig6_111_init.txt.headers.txt",
+      "download_ok": true
+    },
+    {
+      "name": "ChenFig6_111_matrix.txt",
+      "role": "JAS 2026 Fig. 6 manufacturing benchmark, incidence matrix (author repository)",
+      "url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_matrix.txt",
+      "final_url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_matrix.txt",
+      "utc_started": "2026-11-07T03:27:36Z",
+      "utc_finished": "2026-11-07T03:27:36Z",
+      "http_status": 200,
+      "redirect_chain": [
+        {
+          "status": "200",
+          "location": null
+        }
+      ],
+      "bytes": 1234,
+      "sha256": "454441476dc5874d2a848a3ce9ceb417c4b6d1334cf12edd7ab444d80ab9404d",
+      "content_type": "text/plain; charset=utf-8",
+      "curl_exit_code": 0,
+      "curl_timeout": false,
+      "curl_error": null,
+      "content_sanity_ok": true,
+      "content_sanity_note": "ASCII numeric matrix/marking data",
+      "saved_as": "ChenFig6_111_matrix.txt",
+      "raw_log": "raw_logs/ChenFig6_111_matrix.txt.curl.log",
+      "headers_log": "raw_logs/ChenFig6_111_matrix.txt.headers.txt",
+      "download_ok": true
+    },
+    {
+      "name": "tina-4.0.0-amd64-linux.tgz",
+      "role": "TINA 4.0.0 external oracle (Linux x86_64)",
+      "url": "https://projects.laas.fr/tina/binaries/tina-4.0.0-amd64-linux.tgz",
+      "final_url": "https://projects.laas.fr/tina/binaries/tina-4.0.0-amd64-linux.tgz",
+      "utc_started": "2026-11-07T03:27:36Z",
+      "utc_finished": "2026-11-07T03:27:38Z",
+      "http_status": 200,
+      "redirect_chain": [
+        {
+          "status": "200",
+          "location": null
+        }
+      ],
+      "bytes": 26065306,
+      "sha256": "5e1cbd7c2e043419037a3d265914042fde795563094f38ddd88b42444d4afa8c",
+      "content_type": "application/x-gzip",
+      "curl_exit_code": 0,
+      "curl_timeout": false,
+      "curl_error": null,
+      "content_sanity_ok": true,
+      "content_sanity_note": "gzip archive magic present",
+      "saved_as": "tina-4.0.0-amd64-linux.tgz",
+      "raw_log": "raw_logs/tina-4.0.0-amd64-linux.tgz.curl.log",
+      "headers_log": "raw_logs/tina-4.0.0-amd64-linux.tgz.headers.txt",
+      "download_ok": true
+    }
+  ],
+  "sha256sums_file": "SHA256SUMS",
+  "comparison_file": "comparison.json"
+}
