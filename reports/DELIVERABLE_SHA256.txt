@@ -1,1 +1,8 @@
-5aaab34ca10511b86f69f3d6438c2cfb4670de14d3c5b2f9c91f70fcd21159b3  ../TII_Published_TPN_Case_Comparison.zip
+41e73518e3ec317e3ddc60449a4a1c39fc46dc8b6faeed7299405e950f918473  ../TII_Published_TPN_Case_Comparison.zip
+
+# Built from literature_tpn_case_eval/ on 2026-11-07 (local rebuild after the
+# reviewer fixes).  This sidecar records the SHA-256 of the distributed zip and
+# is deliberately excluded from MANIFEST.sha256 and from the zip itself: a file
+# cannot contain the hash of the archive that contains it.
+# Verify with:
+#   python3 tools/verify_deliverable.py --zip ../TII_Published_TPN_Case_Comparison.zip --root .

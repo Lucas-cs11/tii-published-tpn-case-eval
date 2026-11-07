@@ -119,9 +119,15 @@ published behaviour removed, and it is listed in `fig6_mapping.csv`.
   10-event observable word
   `machining_done machining_done transfer_done machining2_done transfer_done
   transfer2_done machining2_done transfer2_done inspection_pass inspection_pass`
-  both have completion interval `[27,29] s`; a common duration exists, so the
-  model is not `(L,H)`-bounded task-completion diagnosable for `L>=10, H>=29`.
-  See `witnesses.json` (`critical_pair`).
+  both have completion interval `[27,29] s`; the normal path fires no fault
+  transition, the faulty path fires `tf`, and a **common completion duration of
+  exactly 27 s** is realisable in both timed executions (exact `Fraction`
+  check), so the model is not `(L,H)`-bounded task-completion diagnosable for
+  `L>=10, H>=29`.  The full certificate (identical word, fault-free normal
+  path, faulty path with a fault, overlapping intervals, common duration) is
+  in `witnesses.json` (`critical_pair.certificate`,
+  `critical_pair.common_duration`) and is asserted independently by
+  `tests/test_amb_certificate.py`.
 * Adjustment probe: single-parameter shrinkings of the inspection / fault /
   recovery windows do **not** remove that pair (the faulted part is off the
   critical path, so its extra time is absorbed by concurrency slack). The

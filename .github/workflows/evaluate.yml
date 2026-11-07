@@ -119,6 +119,10 @@ jobs:
           set -euo pipefail
           python tools/make_deliverable.py --out TII_Published_TPN_Case_Comparison.zip
           sha256sum TII_Published_TPN_Case_Comparison.zip
+      - name: Verify deliverable against its embedded manifest
+        run: |
+          set -euo pipefail
+          python tools/verify_deliverable.py --zip TII_Published_TPN_Case_Comparison.zip --root .
       - name: Upload deliverable
         uses: actions/upload-artifact@v4
         with:
@@ -171,8 +175,9 @@ jobs:
           os.makedirs("sources/gha_evidence", exist_ok=True)
           open("sources/gha_evidence/run.json","w").write(json.dumps(rec, indent=1)+"\n")
           line = (f"| {rec['run_id']} | {rec['utc']} | `{rec['commit'][:12]}` | "
-                  f"{os.environ.get('GITHUB_SERVER_URL')}/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{rec['run_id']} | PASS |\n")
-          header = "| run id | UTC | commit | URL | verdict |\n|---|---|---|---|---|\n"
+                  f"auto-recorded | PASS | "
+                  f"{os.environ.get('GITHUB_SERVER_URL')}/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{rec['run_id']} |\n")
+          header = "| run id | UTC | commit | workflow | verdict | note |\n|---|---|---|---|---|---|\n"
           p = "reports/gha_runs.md"
           old = open(p).read() if os.path.exists(p) else header
           if "| run id |" not in old:

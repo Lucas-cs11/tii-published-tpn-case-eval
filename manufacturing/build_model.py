@@ -34,6 +34,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+from fractions import Fraction
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -198,6 +199,10 @@ def main():
     def flag_path(need_fault=False, need_rework=False):
         # BFS over (class, flags) so that fault/rework paths to the (unique)
         # finish class are not hidden by the shortest-path parent tree.
+        # The fault flag must match *exactly*: a "normal" completion is only
+        # accepted from a history that never fired the fault transition (the
+        # same requirement as find_critical_pair); merely passing
+        # need_fault=False must not return a faulty completion.
         start = (0, False, False)
         parent = {start: (None, None)}
         queue = [start]
@@ -205,7 +210,7 @@ def main():
             cur = queue.pop(0)
             cid, fs, rs = cur
             if cid in info["finish"]:
-                if (not need_fault or fs) and (not need_rework or rs):
+                if fs is need_fault and (not need_rework or rs):
                     seq = []
                     while parent[cur][0] is not None:
                         prev, t = parent[cur]
@@ -289,7 +294,10 @@ def main():
     if pair:
         print("critical pair:", pair.get("observable_word"),
               pair.get("normal_interval"), pair.get("faulty_interval"),
-              "overlap", pair.get("overlap"))
+              "overlap", pair.get("overlap"),
+              "common_duration", pair.get("common_duration"),
+              "ambiguous", pair.get("ambiguous"))
+        print("  certificate:", pair.get("certificate"))
     for k, v in adj.items():
         print("  ", k, v.get("normal_interval"), v.get("faulty_interval"),
               "ambiguous", v.get("ambiguous"))
@@ -304,25 +312,56 @@ def main():
 
 
 # ------------------------------------------------- critical pair / adjustment
+def observable_word(sequence, trans):
+    """Observable label word of a firing sequence."""
+    return tuple(trans[t]["label"] for t in sequence if trans[t]["observable"])
+
+
+def _schedule_json(schedule):
+    """JSON-safe copy of a concrete timed execution (exact Fractions as str)."""
+    return [{"transition": t, "firing_time": str(tau)} for t, tau in schedule]
+
+
 def find_critical_pair(model, graph, info):
-    """Find a normal and a faulty complete execution with the same observable
-    word and overlapping completion-time intervals (an AMB witness)."""
+    """Find an AMB witness: a normal and a faulty complete execution that have
+    the *same* observable word, overlapping completion-time intervals and a
+    concrete common completion duration.
+
+    The returned ``certificate`` dict makes every AMB ingredient explicit and
+    independently checkable (tests/test_amb_certificate.py asserts each one):
+
+    * ``normal_found`` / ``normal_has_no_fault`` -- the normal path exists and
+      never fires the fault transition (the search accepts a finish class only
+      for histories whose fault flag is *exactly* False; it must not return a
+      faulty completion just because no fault was required);
+    * ``faulty_found`` / ``faulty_has_fault`` -- the faulty path exists and
+      fires the fault transition at least once;
+    * ``identical_observable_word`` -- both paths project to the same word;
+    * ``intervals_overlap`` -- the two completion-time intervals intersect;
+    * ``common_duration`` -- one exact ``Fraction`` duration lies in both
+      intervals *and* is realisable in both timed executions (checked with
+      ``scg.FiringDomain.feasible_at``, which returns concrete schedules).
+
+    ``pair["ambiguous"]`` is True iff the whole certificate is satisfied.
+    """
     from collections import defaultdict
     oracle = scg.FiringDomain(model)
-    init, trans = scg.model_maps(model)
+    _init, trans = scg.model_maps(model)
     adj = defaultdict(list)
     for (s, t, d) in graph.edges:
         adj[s].append((t, d))
     finish = set(info["finish"])
 
     def bfs(need_fault):
+        # The fault flag must match *exactly*: a normal completion must come
+        # from a fault-free history, never from an arbitrary finish class.
         start = (0, False)
         parent = {start: (None, None)}
         q = [start]
         while q:
             cur = q.pop(0)
             cid, fs = cur
-            if cid in finish and (fs or not need_fault):
+            if cid in finish and fs is need_fault:
                 seq = []
                 while parent[cur][0] is not None:
                     prev, t = parent[cur]
@@ -339,7 +378,8 @@ def find_critical_pair(model, graph, info):
     normal = bfs(False)
     if normal is None:
         return None
-    W = tuple(trans[t]["label"] for t in normal if trans[t]["observable"])
+    normal_fault = any(trans[t]["fault"] for t in normal)
+    W = observable_word(normal, trans)
     gn, gun = oracle.interval(normal)
     seen = set()
     found = []
@@ -366,18 +406,45 @@ def find_critical_pair(model, graph, info):
 
     dfs(0, 0, False, [])
     faulty = found[0] if found else None
+    faulty_fault = bool(faulty) and any(trans[t]["fault"] for t in faulty)
+    certificate = {
+        "normal_found": True,
+        "normal_has_no_fault": not normal_fault,
+        "faulty_found": faulty is not None,
+        "faulty_has_fault": faulty_fault,
+        "identical_observable_word": (faulty is not None
+                                      and observable_word(faulty, trans) == W),
+        "intervals_overlap": False,
+        "common_duration": False,
+    }
     pair = {"observable_word": list(W), "normal_sequence": normal,
             "faulty_sequence": faulty,
-            "normal_interval": [str(gn), str(gun)]}
-    if faulty:
+            "normal_interval": [str(gn), str(gun)],
+            "faulty_interval": None, "overlap": None,
+            "normal_contains_fault": normal_fault,
+            "faulty_contains_fault": faulty_fault,
+            "common_duration": None,
+            "common_duration_schedule": None,
+            "certificate": certificate,
+            "ambiguous": False}
+    if faulty is not None:
         gf, guf = oracle.interval(faulty)
         lo, hi = max(gn, gf), min(gun, guf)
+        certificate["intervals_overlap"] = bool(lo <= hi)
         pair["faulty_interval"] = [str(gf), str(guf)]
         pair["overlap"] = [str(lo), str(hi)] if lo <= hi else None
-        pair["ambiguous"] = lo <= hi
-    else:
-        pair["faulty_interval"] = None
-        pair["ambiguous"] = False
+        if lo <= hi:
+            common = max(gn, gf)  # left endpoint of the intersection
+            ok_n, sched_n = oracle.feasible_at(normal, common, return_schedule=True)
+            ok_f, sched_f = oracle.feasible_at(faulty, common, return_schedule=True)
+            certificate["common_duration"] = bool(ok_n and ok_f)
+            if ok_n and ok_f:
+                pair["common_duration"] = str(common)
+                pair["common_duration_schedule"] = {
+                    "normal": _schedule_json(sched_n),
+                    "faulty": _schedule_json(sched_f),
+                }
+    pair["ambiguous"] = all(certificate.values())
     return pair
 
 

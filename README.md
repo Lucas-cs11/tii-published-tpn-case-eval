@@ -11,7 +11,12 @@ and never modified.
 * **Wang/Mahulea/Silva TAC 2015** (`wangTAC.net`, 7P/7T): Table 4.1 state
   classes and Example 4.1 firing domain `[4,7]` reproduced exactly; the
   independent SCG equals TINA 4.0.0 `-W` (38 classes / 63 edges). This is the
-  formal SCG/firing-domain correctness benchmark.
+  formal SCG/firing-domain correctness benchmark. The reproduced Table 4.1
+  and Example 4.1 are **Xu Wang's PhD thesis, Chapter 4** (Fig. 4.1(a),
+  Table 4.1, Example 4.1; University of Zaragoza, 2016,
+  <http://webdiis.unizar.es/~cmahulea/papers/PhD_Xu_Wang.pdf>); the IEEE TAC
+  60(9) 2015 DOI `10.1109/TAC.2015.2405293` is the formal journal citation of
+  record, and the journal PDF was **not** read.
 * **Basile/Cabasino/Seatzu TAC 2015** (`basileTAC.net`, 5P/7T): 5 classes,
   TINA-consistent; too small to be an illustrative case; full text not
   accessible (`NOT_ESTABLISHED` for its algorithmic details).
@@ -44,11 +49,21 @@ and never modified.
 
 ```
 python pipeline/verify.py                 # end-to-end checks (uses local sources)
-python -m pytest tests -q                 # 51 tests
+python -m pytest tests -q                 # 58 tests
 python manufacturing/build_model.py       # adapted model + witnesses + SCG
+
+# package (manifest and zip use the same file set, tools/deliverable_files.py)
+python tools/make_manifest.py --root . --out MANIFEST.sha256
+python tools/make_deliverable.py --root . --out ../TII_Published_TPN_Case_Comparison.zip
+python tools/verify_deliverable.py --zip ../TII_Published_TPN_Case_Comparison.zip --root .
 ```
 
 Authoritative run: `.github/workflows/evaluate.yml` on GitHub Actions; run ids
 in `reports/gha_runs.md` / `reports/GHA_RUNS.json`.
 
-Deliverable: `../TII_Published_TPN_Case_Comparison.zip`.
+Deliverable: `../TII_Published_TPN_Case_Comparison.zip`; its SHA-256 is recorded
+in `reports/DELIVERABLE_SHA256.txt` (a sidecar build record kept outside the
+archive, since a file cannot contain the hash of the archive that contains it).
+`MANIFEST.sha256` lists exactly the archive members except itself, and
+`tools/verify_deliverable.py` recomputes every member hash and fails on any
+missing or extra file.

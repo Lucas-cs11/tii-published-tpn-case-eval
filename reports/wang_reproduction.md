@@ -1,18 +1,31 @@
 # Reproduction of Wang, Mahulea & Silva (IEEE TAC 2015)
 
-*Paper:* X. Wang, C. Mahulea, M. Silva, "Diagnosis of Time Petri Nets Using
-Fault Diagnosis Graph", *IEEE Trans. Automatic Control* 60(9), 2015,
-DOI 10.1109/TAC.2015.2405293.
+## 0. Source attribution of the reproduction targets (read first)
+
+The two reproduction targets in this report — the six state classes of
+**Table 4.1** and the firing domain of **Example 4.1** — are taken from
+**Xu Wang's PhD thesis**, not from the journal PDF:
+
+* X. Wang, *Discrete event system tools for fault diagnosis and collision
+  prevention*, PhD thesis, **University of Zaragoza, 2016, Chapter 4** —
+  specifically **Fig. 4.1(a)** (the TPN model), **Table 4.1** (state classes
+  and firing domains) and **Example 4.1** (firing domain `[4,7]`).
+  URL: <http://webdiis.unizar.es/~cmahulea/papers/PhD_Xu_Wang.pdf>
+* The **formal journal citation of record for the model and method** is:
+  X. Wang, C. Mahulea, M. Silva, "Diagnosis of Time Petri Nets Using Fault
+  Diagnosis Graph", *IEEE Trans. Automatic Control* 60(9), 2015,
+  DOI 10.1109/TAC.2015.2405293.
+* The **IEEE TAC journal PDF was not read** (it is not open access). No claim
+  in this report or elsewhere in the deliverable depends on material unique to
+  the journal version.  The reproduced numbers are cross-checked against the
+  official published `.net` model and TINA 4.0.0, not against the journal
+  PDF.  When this report says "thesis", it means Chapter 4 of the Zaragoza
+  dissertation cited above.
+
 *Model:* official `wangTAC.net` (TWINA examples, LAAS/CNRS), downloaded in
 GitHub Actions; see `sources/download_log.json`.
-*Paper-level source for the examples used below:* the journal paper's model is
-the TPN of Fig. 4.1(a) in the first author's PhD thesis (X. Wang, *Discrete
-event system tools for fault diagnosis and collision prevention*, Univ.
-Zaragoza, 2016, Ch. 4), whose Table 4.1 and Example 4.1 are the journal's
-state-class and firing-domain examples. The thesis text is the traceable
-open-access source; the journal DOI is the citation of record.
 
-## 1. Model recovered (7 places / 7 transitions / 18 arcs)
+## 1. Model recovered (Xu Wang PhD thesis, Ch. 4, Fig. 4.1(a); 7 places / 7 transitions / 18 arcs)
 
 TINA `-p` and the independent parser agree exactly. Mapping to the thesis
 notation (thesis symbol → `.net` id):
@@ -30,13 +43,16 @@ notation (thesis symbol → `.net` id):
 Initial marking `p1 + 2 p2`. The model is an ordinary P/T TPN: no read,
 inhibitor, stopwatch arcs or priority rules (`special_features` all false),
 single-server. The `.net` file uses TINA labels `a,b,c,f`; the fault label `f`
-is treated as unobservable (`T_f ⊆ T_uo`), as in the paper.
+is treated as unobservable (`T_f ⊆ T_uo`), as in the model of thesis
+Fig. 4.1(a) and in the journal method description.
 
-## 2. State classes (thesis Table 4.1) — exact match
+## 2. State classes (Xu Wang PhD thesis, Ch. 4, Table 4.1) — exact match
 
-Independent exact SCG (`pipeline/scg.py`, classical firing-domain state-class
-graph, `Fraction` arithmetic). Intervals are the firing windows `[eft,lft]` of
-each enabled transition; columns are the thesis variables.
+The six expected rows below are **thesis Table 4.1**, not a table from the
+IEEE TAC journal PDF (which was not read).  Independent exact SCG
+(`pipeline/scg.py`, classical firing-domain state-class graph, `Fraction`
+arithmetic). Intervals are the firing windows `[eft,lft]` of each enabled
+transition; columns are the thesis variables.
 
 | class | marking | thesis Table 4.1 | our domain |
 |---|---|---|---|
@@ -52,8 +68,10 @@ core semantic reproduction: the implementation's successor rule (delay
 variable + urgency constraints + projection) reproduces the published firing
 domains exactly.
 
-## 3. Example 4.1 firing domain — exact match [4,7]
+## 3. Example 4.1 firing domain (Xu Wang PhD thesis, Ch. 4) — exact match [4,7]
 
+The `[4,7]` target and the hand-derived `y4 − y1 ≤ 4` urgency constraint are
+**thesis Example 4.1** (University of Zaragoza 2016), not the journal PDF.
 `sigma = t1 eps2 eps4` (`.net` `t0 t1 t3`). The exact oracle
 (`pipeline/oracle.py`, prefix-sum difference constraints) computes
 
@@ -97,17 +115,18 @@ reported rather than silently reconciled.
 
 Our classical firing-domain SCG gives **38 classes / 63 edges**, i.e. it
 matches TINA `-W` exactly (states and transitions). `-S` is TINA's finer
-"strong" zone graph (42/69); `-E`/`-M` are its state/marking quotients. The
-published Table 4.1 is a linear state-class graph (firing domains), so `-W` is
+"strong" zone graph (42/69); `-E`/`-M` are its state/marking quotients. Thesis
+Table 4.1 is a linear state-class graph (firing domains), so `-W` is
 the semantically corresponding reference. The mismatch between -W and -S is a
 graph-refinement choice, not a semantic error; both are reported.
 
 ## 5. Case-evaluation consequence
 
 The Wang model is an excellent **SCG/firing-domain correctness reference**:
-tiny, plain P/T, fully reproduced against the paper's table and TINA, with a
-fault and observable/unobservable partition. It has no manufacturing task and
-no first-completion semantics, so it should be used as the formal benchmark,
+tiny, plain P/T, fully reproduced against thesis Table 4.1 / Example 4.1
+(Xu Wang, Univ. Zaragoza 2016, Ch. 4) and TINA, with a fault and
+observable/unobservable partition. It has no manufacturing task and no
+first-completion semantics, so it should be used as the formal benchmark,
 not as the industrial example.
 
 Verdict: `WANG_REPRODUCTION = PASS`.

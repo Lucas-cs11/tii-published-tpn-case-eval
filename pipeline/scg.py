@@ -532,6 +532,45 @@ class FiringDomain:
         gl = -dn[0] if dn[0] is not None else None
         return gl, gu
 
+    def feasible_at(self, seq, value, *, return_schedule=False):
+        """Exact check that the *last* firing of ``seq`` occurs at ``value``.
+
+        The firing-domain constraints are difference constraints over the
+        global firing dates ``S_i`` with ``S_0 = 0``.  Equality ``S_n = value``
+        is imposed by adding both ``S_n - S_0 <= value`` and
+        ``S_0 - S_n <= -value`` and re-running Bellman-Ford: the augmented
+        system is feasible iff there is no negative cycle.  The shortest-path
+        distances are then themselves a valid schedule (after normalising
+        ``S_0 = 0``), so ``return_schedule=True`` also yields a concrete timed
+        execution, as a list of ``(transition, firing_time)`` with exact
+        ``Fraction`` firing times.
+
+        This is used by the AMB-certificate regression test to check that the
+        normal and the faulty completion really share a *common duration*, not
+        merely overlapping bounds.
+        """
+        cons, _final, steps = self.constraints(seq)
+        n = len(seq)
+        value = Fraction(value)
+        edges = list(cons) + [(0, n, value), (n, 0, -value)]
+        dist = [Fraction(0)] * (n + 1)  # implicit super-source to every node
+        for _ in range(n + 1):
+            changed = False
+            for (j, i, c) in edges:
+                v = dist[j] + c
+                if v < dist[i]:
+                    dist[i] = v
+                    changed = True
+            if not changed:
+                if return_schedule:
+                    base = dist[0]
+                    return True, [(steps[i - 1][1], dist[i] - base)
+                                  for i in range(1, n + 1)]
+                return True
+        if return_schedule:
+            return False, None
+        return False
+
     def feasible(self, seq) -> bool:
         try:
             self.interval(seq)

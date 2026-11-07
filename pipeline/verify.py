@@ -9,8 +9,11 @@ Runs, in order:
    (Table 4.1 classes, Example 4.1 domain [4,7]);
 3. external TINA cross-check (-S / -E / -M / -W) if TINA is available;
 4. the adapted JAS 2026 manufacturing model: structural checks, exact SCG,
-   normal/fault/rework witnesses, AMB critical pair;
-5. a machine-readable JSON report plus a PASS/FAIL summary.
+   normal/fault/rework witnesses, and an AMB critical pair with an explicit
+   certificate (`pair["ambiguous"]` must be exactly True and every certificate
+   ingredient must hold: fault-free normal path, faulty path with a fault,
+   identical observable word, overlapping intervals, common exact duration);
+5. a machine-readable JSON report plus a clearly printed section-status table.
 
 Exit code is non-zero iff a required check fails.  The GitHub Actions job
 `.github/workflows/evaluate.yml` runs this script with the fetched sources and
@@ -37,6 +40,28 @@ import tina_net  # noqa: E402
 
 def section(name, ok, **payload):
     return {"check": name, "status": "PASS" if ok else "FAIL", **payload}
+
+
+def print_section_statuses(report):
+    """Print the final section table and the last section's sub-checks."""
+    sections = report["run"]["sections"]
+    print("\n=== verification section statuses ===")
+    for sec in sections:
+        print(f"  [{sec['status']:4s}] {sec['check']}")
+    last = sections[-1]
+    print(f"\n=== last section: {last['check']} ===")
+    print(f"  status: {last['status']}")
+    cert = last.get("amb_certificate")
+    if cert:
+        print("  AMB certificate:")
+        for key, value in cert.items():
+            print(f"    [{'PASS' if value is True else 'FAIL'}] {key}")
+        if last.get("common_completion_duration") is not None:
+            print("  common completion duration: "
+                  f"{last['common_completion_duration']} (exact Fraction)")
+    print(f"\nVERDICT: {report['verdict']} "
+          f"({len([s for s in sections if s['status'] == 'PASS'])}/"
+          f"{len(sections)} sections PASS)")
 
 
 def wang_table_4_1(model):
@@ -156,7 +181,6 @@ def main(argv=None):
     # 4. unchanged 17P/15T control: exact SCG + TINA -W cross-check + AMB pair
     control_path = ROOT / "models" / "control_17P15T.json"
     if control_path.exists():
-        import json as _json
         from collections import defaultdict
         ctrl = scg.load_model(str(control_path))
         cg = scg.SCG(ctrl).build()
@@ -164,6 +188,7 @@ def main(argv=None):
         cout = defaultdict(list)
         for (s_, t_, d_) in cg.edges:
             cout[s_].append((t_, d_))
+        _, ctrl_trans = scg.model_maps(ctrl)
 
         def cbfs(need_fault=False):
             start = (0, False)
@@ -172,7 +197,10 @@ def main(argv=None):
             while q:
                 cur = q.pop(0)
                 cid, fs = cur
-                if cid in cfinish and (fs or not need_fault):
+                # The fault flag must match exactly: the "normal" search may
+                # only return a fault-free history, never an arbitrary finish
+                # class just because no fault was required.
+                if cid in cfinish and fs is need_fault:
                     seq = []
                     while parent[cur][0] is not None:
                         prev, t = parent[cur]
@@ -186,51 +214,55 @@ def main(argv=None):
                         q.append(nxt)
             return None
 
-        _, ctrl_trans = scg.model_maps(ctrl)
         cnormal = cbfs(False)
-        oracle_c = scg.FiringDomain(ctrl)
-        cW = tuple(ctrl_trans[t]["label"] for t in cnormal if ctrl_trans[t]["observable"])
-        cgn, cgun = oracle_c.interval(cnormal)
-        cseen = set()
-        cfound = []
-
-        def cdfs(cid, pos, fault, seq):
-            if cfound:
-                return
-            if cid in cfinish:
-                if pos == len(cW) and fault:
-                    cfound.append(list(seq))
-                return
-            if (cid, pos, fault) in cseen:
-                return
-            cseen.add((cid, pos, fault))
-            for t, d in cout[cid]:
-                lab = ctrl_trans[t]["label"]
-                if lab:
-                    if pos >= len(cW) or cW[pos] != lab:
-                        continue
-                    cdfs(d, pos + 1, fault or ctrl_trans[t]["fault"], seq + [t])
-                else:
-                    cdfs(d, pos, fault or ctrl_trans[t]["fault"], seq + [t])
-
-        cdfs(0, 0, False, [])
-        camb = False
         cpair = None
-        if cfound:
-            cfg, cfgu = oracle_c.interval(cfound[0])
-            lo, hi = max(cgn, cfg), min(cgun, cfgu)
-            camb = lo <= hi
-            cpair = {"normal_interval": [str(cgn), str(cgun)],
-                     "fault_interval": [str(cfg), str(cfgu)],
-                     "overlap": [str(lo), str(hi)] if camb else None,
-                     "observable_word": list(cW)}
-        ok = len(cg.classes) > 0 and cpair is not None
+        camb = False
+        if cnormal is not None:
+            oracle_c = scg.FiringDomain(ctrl)
+            cW = tuple(ctrl_trans[t]["label"] for t in cnormal
+                       if ctrl_trans[t]["observable"])
+            cgn, cgun = oracle_c.interval(cnormal)
+            cseen = set()
+            cfound = []
+
+            def cdfs(cid, pos, fault, seq):
+                if cfound:
+                    return
+                if cid in cfinish:
+                    if pos == len(cW) and fault:
+                        cfound.append(list(seq))
+                    return
+                if (cid, pos, fault) in cseen:
+                    return
+                cseen.add((cid, pos, fault))
+                for t, d in cout[cid]:
+                    lab = ctrl_trans[t]["label"]
+                    if lab:
+                        if pos >= len(cW) or cW[pos] != lab:
+                            continue
+                        cdfs(d, pos + 1, fault or ctrl_trans[t]["fault"], seq + [t])
+                    else:
+                        cdfs(d, pos, fault or ctrl_trans[t]["fault"], seq + [t])
+
+            cdfs(0, 0, False, [])
+            if cfound:
+                cfg, cfgu = oracle_c.interval(cfound[0])
+                lo, hi = max(cgn, cfg), min(cgun, cfgu)
+                camb = lo <= hi
+                cpair = {"normal_interval": [str(cgn), str(cgun)],
+                         "fault_interval": [str(cfg), str(cfgu)],
+                         "overlap": [str(lo), str(hi)] if camb else None,
+                         "ambiguous": camb,
+                         "observable_word": list(cW)}
+        ok = len(cg.classes) > 0 and cpair is not None and \
+            cpair.get("ambiguous") is True
         sec = section("control_17P15T:corrected_scg_and_AMB", ok,
                       places=len(ctrl["places"]),
                       transitions=len(ctrl["transitions"]),
                       scg_classes=len(cg.classes), scg_edges=len(cg.edges),
                       truncated=cg.truncated,
                       reachable_markings=cg.summary()["reachable_markings"],
+                      normal_is_fault_free=(cnormal is not None),
                       critical_pair=cpair)
         report["run"]["sections"].append(sec)
         if not ok:
@@ -269,17 +301,25 @@ def main(argv=None):
     info = build_model.scg_paths(model)
     mfg_graph = info["graph"]
     pair = build_model.find_critical_pair(model, mfg_graph, info)
-    witnesses = {}
-    for name in ("normal_completion", "fault_completion", "rework_completion"):
-        pass
-    ok = (len(model["places"]), len(model["transitions"])) == (21, 16) and \
-        not mfg_graph.truncated and pair is not None and pair.get("ambiguous")
+    # The AMB certificate must be explicit: an AMB pair is valid only when
+    # pair["ambiguous"] is exactly True *and* every certificate ingredient
+    # (fault-free normal path, faulty path with >=1 fault, identical observable
+    # word, overlapping intervals, common exact duration) holds.
+    cert = pair.get("certificate") if pair is not None else None
+    cert_ok = bool(cert) and all(value is True for value in cert.values())
+    amb = pair is not None and pair.get("ambiguous") is True
+    size_ok = (len(model["places"]), len(model["transitions"])) == (21, 16)
+    ok = size_ok and not mfg_graph.truncated and amb and cert_ok
     sec = section("manufacturing:adapted_model_and_AMB_pair", ok,
                   places=len(model["places"]),
                   transitions=len(model["transitions"]),
                   scg_classes=len(mfg_graph.classes),
                   scg_edges=len(mfg_graph.edges),
                   scg_truncated=mfg_graph.truncated,
+                  ambiguous_is_true=amb,
+                  amb_certificate_ok=cert_ok,
+                  amb_certificate=cert,
+                  common_completion_duration=(pair or {}).get("common_duration"),
                   critical_pair=pair)
     report["run"]["sections"].append(sec)
     if not ok:
@@ -293,6 +333,7 @@ def main(argv=None):
     print(json.dumps({"verdict": report["verdict"], "failures": failures,
                       "sections": [(s["check"], s["status"]) for s in report["run"]["sections"]]},
                      indent=1))
+    print_section_statuses(report)
     return 0 if not failures else 1
 
 

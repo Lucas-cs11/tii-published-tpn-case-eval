@@ -1,0 +1,72 @@
+{
+ "verdict": "PASS",
+ "failures": [],
+ "sections": [
+  [
+   "parse:wangTAC.net",
+   "PASS"
+  ],
+  [
+   "parse:basileTAC.net",
+   "PASS"
+  ],
+  [
+   "wang:table_4_1_state_classes",
+   "PASS"
+  ],
+  [
+   "wang:example_4_1_firing_domain",
+   "PASS"
+  ],
+  [
+   "basile:scg",
+   "PASS"
+  ],
+  [
+   "tina:wangTAC.net:class_graph_matches_-W",
+   "PASS"
+  ],
+  [
+   "tina:basileTAC.net:class_graph_matches_-W",
+   "PASS"
+  ],
+  [
+   "control_17P15T:corrected_scg_and_AMB",
+   "PASS"
+  ],
+  [
+   "tina:control_17P15T:matches_-W",
+   "PASS"
+  ],
+  [
+   "manufacturing:adapted_model_and_AMB_pair",
+   "PASS"
+  ]
+ ]
+}
+
+=== verification section statuses ===
+  [PASS] parse:wangTAC.net
+  [PASS] parse:basileTAC.net
+  [PASS] wang:table_4_1_state_classes
+  [PASS] wang:example_4_1_firing_domain
+  [PASS] basile:scg
+  [PASS] tina:wangTAC.net:class_graph_matches_-W
+  [PASS] tina:basileTAC.net:class_graph_matches_-W
+  [PASS] control_17P15T:corrected_scg_and_AMB
+  [PASS] tina:control_17P15T:matches_-W
+  [PASS] manufacturing:adapted_model_and_AMB_pair
+
+=== last section: manufacturing:adapted_model_and_AMB_pair ===
+  status: PASS
+  AMB certificate:
+    [PASS] normal_found
+    [PASS] normal_has_no_fault
+    [PASS] faulty_found
+    [PASS] faulty_has_fault
+    [PASS] identical_observable_word
+    [PASS] intervals_overlap
+    [PASS] common_duration
+  common completion duration: 27 (exact Fraction)
+
+VERDICT: PASS (10/10 sections PASS)

@@ -34,6 +34,16 @@
   "note": "verify and package succeeded; publish-evidence push was rejected as non-fast-forward because 42334097699 had already published the same evidence commit. Superseded."
  },
  "sandbox_note": "Large GHA artifacts cannot be downloaded in the local agent sandbox (objects host blocked); the runner commits the small authoritative download evidence to sources/gha_evidence/ instead.",
+ "local_rebuild": {
+  "utc": "2026-11-07",
+  "authoritative_run_unchanged": 42334373373,
+  "new_run_ids": [],
+  "note": "Package rebuilt locally after the review fixes (manifest/zip consistency + tools/verify_deliverable.py, explicit AMB certificate and fault-free normal-path searches, tests/test_amb_certificate.py, Wang thesis source attribution). No new GitHub Actions run was triggered and no new run id is claimed; the CI evidence under sources/gha_evidence/ and results/gha/ is still from run 42334373373. Only local artifacts were regenerated (MANIFEST.sha256, the deliverable zip, models/manufacturing/verification outputs); the new zip SHA-256 is recorded in reports/DELIVERABLE_SHA256.txt.",
+  "tests": "58 passed",
+  "verification_verdict": "PASS",
+  "sections_passed": 10,
+  "sections_failed": 0
+ },
  "earlier_full_run": {
   "run_id": 42334097699,
   "conclusion": "success",
