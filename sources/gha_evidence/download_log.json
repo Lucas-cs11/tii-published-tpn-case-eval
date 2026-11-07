@@ -1,6 +1,6 @@
 {
   "schema": "tii-tpn-download-log/1",
-  "generated_utc": "2026-11-07T03:27:38Z",
+  "generated_utc": "2026-11-07T03:31:25Z",
   "tool": "tools/fetch_sources.py",
   "backend": "curl",
   "python": "3.14.4",
@@ -11,12 +11,12 @@
     "github_repository": "Lucas-cs11/tii-published-tpn-case-eval",
     "github_workflow": "evaluate",
     "github_job": "fetch",
-    "github_run_id": "42334097699",
+    "github_run_id": "42334373373",
     "github_run_attempt": "1",
-    "github_sha": "da062604b693fc93763c8192cb43062bf6046767",
+    "github_sha": "cae639d507ea10159d8d37fe68148db3d1a8bf0a",
     "github_ref": "refs/heads/main",
     "github_actor": "Lucas-cs11",
-    "runner_name": "GitHub Actions 1000001865",
+    "runner_name": "GitHub Actions 1000001873",
     "runner_os": "Linux",
     "runner_arch": "X64"
   },
@@ -34,8 +34,8 @@
       "role": "published TPN, Wang/Mahulea/Silva TAC 2015 - firing-domain reference",
       "url": "https://projects.laas.fr/twina/files/wangTAC.net",
       "final_url": "https://projects.laas.fr/twina/files/wangTAC.net",
-      "utc_started": "2026-11-07T03:27:36Z",
-      "utc_finished": "2026-11-07T03:27:36Z",
+      "utc_started": "2026-11-07T03:31:21Z",
+      "utc_finished": "2026-11-07T03:31:22Z",
       "http_status": 200,
       "redirect_chain": [
         {
@@ -61,8 +61,8 @@
       "role": "published TPN, Basile/Cabasino/Seatzu TAC 2015 - SCG reference",
       "url": "https://projects.laas.fr/twina/files/basileTAC.net",
       "final_url": "https://projects.laas.fr/twina/files/basileTAC.net",
-      "utc_started": "2026-11-07T03:27:36Z",
-      "utc_finished": "2026-11-07T03:27:36Z",
+      "utc_started": "2026-11-07T03:31:22Z",
+      "utc_finished": "2026-11-07T03:31:22Z",
       "http_status": 200,
       "redirect_chain": [
         {
@@ -88,8 +88,8 @@
       "role": "JAS 2026 Fig. 6 manufacturing benchmark, initial marking (author repository)",
       "url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_init.txt",
       "final_url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_init.txt",
-      "utc_started": "2026-11-07T03:27:36Z",
-      "utc_finished": "2026-11-07T03:27:36Z",
+      "utc_started": "2026-11-07T03:31:22Z",
+      "utc_finished": "2026-11-07T03:31:22Z",
       "http_status": 200,
       "redirect_chain": [
         {
@@ -115,8 +115,8 @@
       "role": "JAS 2026 Fig. 6 manufacturing benchmark, incidence matrix (author repository)",
       "url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_matrix.txt",
       "final_url": "https://raw.githubusercontent.com/PNOptimizer/NewHDesign/main/bin/Debug/ChenFig6_111_matrix.txt",
-      "utc_started": "2026-11-07T03:27:36Z",
-      "utc_finished": "2026-11-07T03:27:36Z",
+      "utc_started": "2026-11-07T03:31:22Z",
+      "utc_finished": "2026-11-07T03:31:22Z",
       "http_status": 200,
       "redirect_chain": [
         {
@@ -142,8 +142,8 @@
       "role": "TINA 4.0.0 external oracle (Linux x86_64)",
       "url": "https://projects.laas.fr/tina/binaries/tina-4.0.0-amd64-linux.tgz",
       "final_url": "https://projects.laas.fr/tina/binaries/tina-4.0.0-amd64-linux.tgz",
-      "utc_started": "2026-11-07T03:27:36Z",
-      "utc_finished": "2026-11-07T03:27:38Z",
+      "utc_started": "2026-11-07T03:31:22Z",
+      "utc_finished": "2026-11-07T03:31:25Z",
       "http_status": 200,
       "redirect_chain": [
         {

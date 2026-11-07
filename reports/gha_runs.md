@@ -23,3 +23,4 @@ Authoritative download facts (from `sources/gha_evidence/download_log.json`):
   bytes; recorded with hashes (NO_REFERENCE).
 * tina-4.0.0-amd64-linux.tgz — HTTP 200, 26,065,306 bytes; SHA-256 in
   `sources/gha_evidence/SHA256SUMS`; executes TINA 4.0.0 on Linux.
+| 42334373373 | 2026-11-07T03:31:54Z | `cae639d507ea` | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42334373373 | PASS |
