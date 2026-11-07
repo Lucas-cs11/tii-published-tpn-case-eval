@@ -1,0 +1,74 @@
+{
+ "V0_original": {
+  "changes": {},
+  "normal_interval": [
+   "27",
+   "29"
+  ],
+  "faulty_interval": [
+   "27",
+   "29"
+  ],
+  "overlap": [
+   "27",
+   "29"
+  ],
+  "ambiguous": true
+ },
+ "V1_inspection_4_4": {
+  "changes": {
+   "c6": [
+    4,
+    4
+   ]
+  },
+  "error": "infeasible firing-domain constraints (negative cycle)"
+ },
+ "V2_inspection_4_4_recovery_1_1": {
+  "changes": {
+   "c6": [
+    4,
+    4
+   ],
+   "rec": [
+    1,
+    1
+   ]
+  },
+  "error": "infeasible firing-domain constraints (negative cycle)"
+ },
+ "V3_inspection_4_4_recovery_1_2_fault_0_0": {
+  "changes": {
+   "c6": [
+    4,
+    4
+   ],
+   "rec": [
+    1,
+    2
+   ],
+   "tf": [
+    0,
+    0
+   ]
+  },
+  "error": "infeasible firing-domain constraints (negative cycle)"
+ },
+ "V4_fixed_timing": {
+  "changes": {
+   "c6": [
+    4,
+    4
+   ],
+   "rec": [
+    1,
+    1
+   ],
+   "tf": [
+    0,
+    0
+   ]
+  },
+  "error": "infeasible firing-domain constraints (negative cycle)"
+ }
+}

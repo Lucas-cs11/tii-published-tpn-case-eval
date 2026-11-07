@@ -1,0 +1,7198 @@
+{
+  "schema": "tii-tpn-tina-reference/1",
+  "generated_utc": "2026-11-07T03:18:57Z",
+  "tina_version": "Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS",
+  "tina_binary": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina",
+  "modes": [
+    "-p",
+    "-S",
+    "-E",
+    "-M",
+    "-W",
+    "-A",
+    "-R"
+  ],
+  "aut_modes": [
+    "default",
+    "-S",
+    "-E",
+    "-M",
+    "-W",
+    "-A"
+  ],
+  "models": {
+    "wangTAC": {
+      "net_file": "wangTAC.net",
+      "net_path": "sources/wangTAC.net",
+      "tina_binary": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina",
+      "tina_version": "Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS",
+      "header": {
+        "places": 7,
+        "transitions": 7,
+        "arcs": 18
+      },
+      "modes": {
+        "-p": {
+          "mode": "-p",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": null,
+          "summary_kind": null,
+          "states": null,
+          "state_transitions": null,
+          "possibly_live": null,
+          "possibly_reversible": null,
+          "summary_table": {},
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -p sources/wangTAC.net",
+          "classes": []
+        },
+        "-S": {
+          "mode": "-S",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 42,
+          "state_transitions": 69,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 42,
+              "props": 7
+            },
+            "transitions": {
+              "count": 69,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -S sources/wangTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 2,
+                "p4": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p2": 2,
+                "p3": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 3,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "marking": {
+                "p5": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "marking": {
+                "p5": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "difference",
+                  "a": "t5",
+                  "b": "t6",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t6",
+                  "b": "t5",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "marking": {
+                "p2": 2,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 3,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "marking": {
+                "p2": 2,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 4,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 21,
+              "marking": {
+                "p2": 1,
+                "p5": 1,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 22,
+              "marking": {
+                "p2": 1,
+                "p5": 1,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 23,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 4,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 24,
+              "marking": {
+                "p5": 2,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 25,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 26,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 27,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 28,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 29,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 30,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 3,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 31,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 33,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 34,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 35,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 36,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 37,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 38,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 39,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 40,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 4,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 41,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 3
+                }
+              ]
+            }
+          ]
+        },
+        "-E": {
+          "mode": "-E",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 18,
+          "state_transitions": 32,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 18,
+              "props": 7
+            },
+            "transitions": {
+              "count": 32,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -E sources/wangTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 2,
+                "p4": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p2": 2,
+                "p3": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "marking": {
+                "p5": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "difference",
+                  "a": "t5",
+                  "b": "t6",
+                  "c": 0
+                },
+                {
+                  "kind": "difference",
+                  "a": "t6",
+                  "b": "t5",
+                  "c": 0
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "marking": {
+                "p2": 2,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 3,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "marking": {
+                "p2": 1,
+                "p5": 1,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 4,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "marking": {
+                "p5": 2,
+                "p6": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 2,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            }
+          ]
+        },
+        "-M": {
+          "mode": "-M",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 16,
+          "state_transitions": 28,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 16,
+              "props": 7
+            },
+            "transitions": {
+              "count": 28,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -M sources/wangTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 2
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 2,
+                "p4": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p2": 2,
+                "p3": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 2
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 2
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 2,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 3,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "marking": {
+                "p5": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "difference",
+                  "a": "t5",
+                  "b": "t6",
+                  "c": -1
+                },
+                {
+                  "kind": "difference",
+                  "a": "t6",
+                  "b": "t5",
+                  "c": 3
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "marking": {
+                "p2": 2,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "marking": {
+                "p2": 1,
+                "p5": 1,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "marking": {
+                "p5": 2,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            }
+          ]
+        },
+        "-W": {
+          "mode": "-W",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 38,
+          "state_transitions": 63,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 38,
+              "props": 7
+            },
+            "transitions": {
+              "count": 63,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -W sources/wangTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 2
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 2,
+                "p4": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p2": 2,
+                "p3": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 5,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 2,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 6,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 3,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 7,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 2,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 8,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 3,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 9,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 2,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 10,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 3,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 11,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 12,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 13,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 14,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 15,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 16,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 17,
+              "marking": {
+                "p5": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "marking": {
+                "p5": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "difference",
+                  "a": "t5",
+                  "b": "t6",
+                  "c": -1
+                },
+                {
+                  "kind": "difference",
+                  "a": "t6",
+                  "b": "t5",
+                  "c": 3
+                }
+              ]
+            },
+            {
+              "id": 19,
+              "marking": {
+                "p2": 2,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 20,
+              "marking": {
+                "p2": 2,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 21,
+              "marking": {
+                "p2": 1,
+                "p5": 1,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 1,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 22,
+              "marking": {
+                "p2": 1,
+                "p5": 1,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 3
+                }
+              ]
+            },
+            {
+              "id": 23,
+              "marking": {
+                "p1": 1,
+                "p2": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 24,
+              "marking": {
+                "p5": 2,
+                "p6": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 25,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 26,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 27,
+              "marking": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 1,
+                  "hi": 4
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 28,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 2,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 4
+                }
+              ]
+            },
+            {
+              "id": 29,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 4
+                },
+                {
+                  "kind": "difference",
+                  "a": "t1",
+                  "b": "t2",
+                  "c": 2
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 2
+                }
+              ]
+            },
+            {
+              "id": 30,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 2,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 31,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 3,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 32,
+              "marking": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 2,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 33,
+              "marking": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 3,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 34,
+              "marking": {
+                "p1": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 3
+                },
+                {
+                  "kind": "difference",
+                  "a": "t2",
+                  "b": "t1",
+                  "c": 2
+                }
+              ]
+            },
+            {
+              "id": 35,
+              "marking": {
+                "p4": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 1,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 36,
+              "marking": {
+                "p3": 1,
+                "p5": 2
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 1,
+                  "hi": 5
+                }
+              ]
+            },
+            {
+              "id": 37,
+              "marking": {
+                "p2": 1,
+                "p6": 1,
+                "p7": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t0",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 1
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 2,
+                  "hi": 4
+                }
+              ]
+            }
+          ]
+        },
+        "-A": {
+          "mode": "-A",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 33,
+          "state_transitions": 78,
+          "possibly_live": true,
+          "possibly_reversible": null,
+          "summary_table": {
+            "states": {
+              "count": 33,
+              "props": 7
+            },
+            "transitions": {
+              "count": 78,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -A sources/wangTAC.net"
+        },
+        "-R": {
+          "mode": "-R",
+          "parsed": true,
+          "net_header": null,
+          "places": 7,
+          "transitions": 7,
+          "arcs": 18,
+          "bounded": true,
+          "summary_kind": "marking",
+          "states": 24,
+          "state_transitions": 48,
+          "possibly_live": true,
+          "possibly_reversible": null,
+          "summary_table": {
+            "states": {
+              "count": 24,
+              "props": 7
+            },
+            "transitions": {
+              "count": 48,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -R sources/wangTAC.net"
+        }
+      },
+      "aut": {
+        "default": {
+          "states": 38,
+          "edge_count": 63,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 0,
+              "label": "t2",
+              "dst": 3
+            },
+            {
+              "src": 1,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 6
+            },
+            {
+              "src": 2,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 3,
+              "label": "t0",
+              "dst": 8
+            },
+            {
+              "src": 4,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 4,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 5,
+              "label": "t0",
+              "dst": 11
+            },
+            {
+              "src": 5,
+              "label": "t3",
+              "dst": 12
+            },
+            {
+              "src": 6,
+              "label": "t0",
+              "dst": 13
+            },
+            {
+              "src": 6,
+              "label": "t4",
+              "dst": 14
+            },
+            {
+              "src": 7,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 7,
+              "label": "t3",
+              "dst": 12
+            },
+            {
+              "src": 8,
+              "label": "t0",
+              "dst": 16
+            },
+            {
+              "src": 8,
+              "label": "t4",
+              "dst": 14
+            },
+            {
+              "src": 9,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 10,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 11,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 12,
+              "label": "t0",
+              "dst": 18
+            },
+            {
+              "src": 12,
+              "label": "t5",
+              "dst": 19
+            },
+            {
+              "src": 13,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 14,
+              "label": "t0",
+              "dst": 18
+            },
+            {
+              "src": 14,
+              "label": "t5",
+              "dst": 20
+            },
+            {
+              "src": 15,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 16,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 17,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 18,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 19,
+              "label": "t0",
+              "dst": 22
+            },
+            {
+              "src": 19,
+              "label": "t6",
+              "dst": 23
+            },
+            {
+              "src": 20,
+              "label": "t0",
+              "dst": 21
+            },
+            {
+              "src": 21,
+              "label": "t0",
+              "dst": 24
+            },
+            {
+              "src": 21,
+              "label": "t6",
+              "dst": 25
+            },
+            {
+              "src": 22,
+              "label": "t0",
+              "dst": 24
+            },
+            {
+              "src": 22,
+              "label": "t6",
+              "dst": 26
+            },
+            {
+              "src": 23,
+              "label": "t0",
+              "dst": 27
+            },
+            {
+              "src": 24,
+              "label": "t6",
+              "dst": 28
+            },
+            {
+              "src": 25,
+              "label": "t0",
+              "dst": 29
+            },
+            {
+              "src": 25,
+              "label": "t1",
+              "dst": 30
+            },
+            {
+              "src": 25,
+              "label": "t2",
+              "dst": 31
+            },
+            {
+              "src": 26,
+              "label": "t0",
+              "dst": 29
+            },
+            {
+              "src": 26,
+              "label": "t1",
+              "dst": 32
+            },
+            {
+              "src": 26,
+              "label": "t2",
+              "dst": 33
+            },
+            {
+              "src": 27,
+              "label": "t0",
+              "dst": 34
+            },
+            {
+              "src": 27,
+              "label": "t1",
+              "dst": 32
+            },
+            {
+              "src": 27,
+              "label": "t2",
+              "dst": 33
+            },
+            {
+              "src": 28,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 28,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 29,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 29,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 30,
+              "label": "t0",
+              "dst": 35
+            },
+            {
+              "src": 31,
+              "label": "t0",
+              "dst": 36
+            },
+            {
+              "src": 32,
+              "label": "t0",
+              "dst": 11
+            },
+            {
+              "src": 32,
+              "label": "t3",
+              "dst": 37
+            },
+            {
+              "src": 33,
+              "label": "t0",
+              "dst": 13
+            },
+            {
+              "src": 33,
+              "label": "t4",
+              "dst": 37
+            },
+            {
+              "src": 34,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 34,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 35,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 36,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 37,
+              "label": "t0",
+              "dst": 17
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t0"
+            ],
+            "2": [
+              "t1"
+            ],
+            "3": [
+              "t2"
+            ],
+            "4": [
+              "t0",
+              "t0"
+            ],
+            "5": [
+              "t0",
+              "t1"
+            ],
+            "6": [
+              "t0",
+              "t2"
+            ],
+            "7": [
+              "t1",
+              "t0"
+            ],
+            "8": [
+              "t2",
+              "t0"
+            ],
+            "9": [
+              "t0",
+              "t0",
+              "t1"
+            ],
+            "10": [
+              "t0",
+              "t0",
+              "t2"
+            ],
+            "11": [
+              "t0",
+              "t1",
+              "t0"
+            ],
+            "12": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "13": [
+              "t0",
+              "t2",
+              "t0"
+            ],
+            "14": [
+              "t0",
+              "t2",
+              "t4"
+            ],
+            "15": [
+              "t1",
+              "t0",
+              "t0"
+            ],
+            "16": [
+              "t2",
+              "t0",
+              "t0"
+            ],
+            "17": [
+              "t0",
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "18": [
+              "t0",
+              "t1",
+              "t3",
+              "t0"
+            ],
+            "19": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "20": [
+              "t0",
+              "t2",
+              "t4",
+              "t5"
+            ],
+            "21": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "22": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "23": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "24": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "25": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "26": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "27": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0"
+            ],
+            "28": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "29": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0"
+            ],
+            "30": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1"
+            ],
+            "31": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2"
+            ],
+            "32": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1"
+            ],
+            "33": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t2"
+            ],
+            "34": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0",
+              "t0"
+            ],
+            "35": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1",
+              "t0"
+            ],
+            "36": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2",
+              "t0"
+            ],
+            "37": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1",
+              "t3"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -aut sources/wangTAC.net",
+          "returncode": 0
+        },
+        "-S": {
+          "states": 42,
+          "edge_count": 69,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 0,
+              "label": "t2",
+              "dst": 3
+            },
+            {
+              "src": 1,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 6
+            },
+            {
+              "src": 2,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 3,
+              "label": "t0",
+              "dst": 8
+            },
+            {
+              "src": 4,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 4,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 5,
+              "label": "t0",
+              "dst": 11
+            },
+            {
+              "src": 5,
+              "label": "t3",
+              "dst": 12
+            },
+            {
+              "src": 6,
+              "label": "t0",
+              "dst": 13
+            },
+            {
+              "src": 6,
+              "label": "t4",
+              "dst": 14
+            },
+            {
+              "src": 7,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 7,
+              "label": "t3",
+              "dst": 12
+            },
+            {
+              "src": 8,
+              "label": "t0",
+              "dst": 16
+            },
+            {
+              "src": 8,
+              "label": "t4",
+              "dst": 14
+            },
+            {
+              "src": 9,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 10,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 11,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 12,
+              "label": "t0",
+              "dst": 18
+            },
+            {
+              "src": 12,
+              "label": "t5",
+              "dst": 19
+            },
+            {
+              "src": 13,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 14,
+              "label": "t0",
+              "dst": 18
+            },
+            {
+              "src": 14,
+              "label": "t5",
+              "dst": 20
+            },
+            {
+              "src": 15,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 16,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 17,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 18,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 19,
+              "label": "t0",
+              "dst": 22
+            },
+            {
+              "src": 19,
+              "label": "t6",
+              "dst": 23
+            },
+            {
+              "src": 20,
+              "label": "t0",
+              "dst": 21
+            },
+            {
+              "src": 21,
+              "label": "t0",
+              "dst": 24
+            },
+            {
+              "src": 21,
+              "label": "t6",
+              "dst": 25
+            },
+            {
+              "src": 22,
+              "label": "t0",
+              "dst": 24
+            },
+            {
+              "src": 22,
+              "label": "t6",
+              "dst": 26
+            },
+            {
+              "src": 23,
+              "label": "t0",
+              "dst": 27
+            },
+            {
+              "src": 24,
+              "label": "t6",
+              "dst": 28
+            },
+            {
+              "src": 25,
+              "label": "t0",
+              "dst": 29
+            },
+            {
+              "src": 25,
+              "label": "t1",
+              "dst": 30
+            },
+            {
+              "src": 25,
+              "label": "t2",
+              "dst": 31
+            },
+            {
+              "src": 26,
+              "label": "t0",
+              "dst": 29
+            },
+            {
+              "src": 26,
+              "label": "t1",
+              "dst": 32
+            },
+            {
+              "src": 26,
+              "label": "t2",
+              "dst": 33
+            },
+            {
+              "src": 27,
+              "label": "t0",
+              "dst": 34
+            },
+            {
+              "src": 27,
+              "label": "t1",
+              "dst": 35
+            },
+            {
+              "src": 27,
+              "label": "t2",
+              "dst": 36
+            },
+            {
+              "src": 28,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 28,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 29,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 29,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 30,
+              "label": "t0",
+              "dst": 37
+            },
+            {
+              "src": 31,
+              "label": "t0",
+              "dst": 38
+            },
+            {
+              "src": 32,
+              "label": "t0",
+              "dst": 39
+            },
+            {
+              "src": 32,
+              "label": "t3",
+              "dst": 40
+            },
+            {
+              "src": 33,
+              "label": "t0",
+              "dst": 41
+            },
+            {
+              "src": 33,
+              "label": "t4",
+              "dst": 40
+            },
+            {
+              "src": 34,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 34,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 35,
+              "label": "t0",
+              "dst": 39
+            },
+            {
+              "src": 35,
+              "label": "t3",
+              "dst": 40
+            },
+            {
+              "src": 36,
+              "label": "t0",
+              "dst": 41
+            },
+            {
+              "src": 36,
+              "label": "t4",
+              "dst": 40
+            },
+            {
+              "src": 37,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 38,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 39,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 40,
+              "label": "t0",
+              "dst": 17
+            },
+            {
+              "src": 41,
+              "label": "t4",
+              "dst": 17
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t0"
+            ],
+            "2": [
+              "t1"
+            ],
+            "3": [
+              "t2"
+            ],
+            "4": [
+              "t0",
+              "t0"
+            ],
+            "5": [
+              "t0",
+              "t1"
+            ],
+            "6": [
+              "t0",
+              "t2"
+            ],
+            "7": [
+              "t1",
+              "t0"
+            ],
+            "8": [
+              "t2",
+              "t0"
+            ],
+            "9": [
+              "t0",
+              "t0",
+              "t1"
+            ],
+            "10": [
+              "t0",
+              "t0",
+              "t2"
+            ],
+            "11": [
+              "t0",
+              "t1",
+              "t0"
+            ],
+            "12": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "13": [
+              "t0",
+              "t2",
+              "t0"
+            ],
+            "14": [
+              "t0",
+              "t2",
+              "t4"
+            ],
+            "15": [
+              "t1",
+              "t0",
+              "t0"
+            ],
+            "16": [
+              "t2",
+              "t0",
+              "t0"
+            ],
+            "17": [
+              "t0",
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "18": [
+              "t0",
+              "t1",
+              "t3",
+              "t0"
+            ],
+            "19": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "20": [
+              "t0",
+              "t2",
+              "t4",
+              "t5"
+            ],
+            "21": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "22": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "23": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "24": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "25": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "26": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "27": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0"
+            ],
+            "28": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "29": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0"
+            ],
+            "30": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1"
+            ],
+            "31": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2"
+            ],
+            "32": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1"
+            ],
+            "33": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t2"
+            ],
+            "34": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0",
+              "t0"
+            ],
+            "35": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0",
+              "t1"
+            ],
+            "36": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0",
+              "t2"
+            ],
+            "37": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1",
+              "t0"
+            ],
+            "38": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2",
+              "t0"
+            ],
+            "39": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1",
+              "t0"
+            ],
+            "40": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1",
+              "t3"
+            ],
+            "41": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t2",
+              "t0"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -S -aut sources/wangTAC.net",
+          "returncode": 0
+        },
+        "-E": {
+          "states": 18,
+          "edge_count": 32,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 0,
+              "label": "t2",
+              "dst": 3
+            },
+            {
+              "src": 1,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 6
+            },
+            {
+              "src": 2,
+              "label": "t0",
+              "dst": 5
+            },
+            {
+              "src": 3,
+              "label": "t0",
+              "dst": 6
+            },
+            {
+              "src": 4,
+              "label": "t1",
+              "dst": 7
+            },
+            {
+              "src": 4,
+              "label": "t2",
+              "dst": 8
+            },
+            {
+              "src": 5,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 5,
+              "label": "t3",
+              "dst": 9
+            },
+            {
+              "src": 6,
+              "label": "t0",
+              "dst": 8
+            },
+            {
+              "src": 6,
+              "label": "t4",
+              "dst": 9
+            },
+            {
+              "src": 7,
+              "label": "t3",
+              "dst": 10
+            },
+            {
+              "src": 8,
+              "label": "t4",
+              "dst": 10
+            },
+            {
+              "src": 9,
+              "label": "t0",
+              "dst": 10
+            },
+            {
+              "src": 9,
+              "label": "t5",
+              "dst": 11
+            },
+            {
+              "src": 10,
+              "label": "t5",
+              "dst": 12
+            },
+            {
+              "src": 11,
+              "label": "t0",
+              "dst": 12
+            },
+            {
+              "src": 11,
+              "label": "t6",
+              "dst": 13
+            },
+            {
+              "src": 12,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 12,
+              "label": "t6",
+              "dst": 15
+            },
+            {
+              "src": 13,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 14,
+              "label": "t6",
+              "dst": 4
+            },
+            {
+              "src": 15,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 15,
+              "label": "t1",
+              "dst": 16
+            },
+            {
+              "src": 15,
+              "label": "t2",
+              "dst": 17
+            },
+            {
+              "src": 16,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 16,
+              "label": "t3",
+              "dst": 9
+            },
+            {
+              "src": 17,
+              "label": "t0",
+              "dst": 8
+            },
+            {
+              "src": 17,
+              "label": "t4",
+              "dst": 9
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t0"
+            ],
+            "2": [
+              "t1"
+            ],
+            "3": [
+              "t2"
+            ],
+            "4": [
+              "t0",
+              "t0"
+            ],
+            "5": [
+              "t0",
+              "t1"
+            ],
+            "6": [
+              "t0",
+              "t2"
+            ],
+            "7": [
+              "t0",
+              "t0",
+              "t1"
+            ],
+            "8": [
+              "t0",
+              "t0",
+              "t2"
+            ],
+            "9": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "10": [
+              "t0",
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "11": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "12": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "13": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "14": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "15": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "16": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1"
+            ],
+            "17": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -E -aut sources/wangTAC.net",
+          "returncode": 0
+        },
+        "-M": {
+          "states": 16,
+          "edge_count": 28,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 0,
+              "label": "t2",
+              "dst": 3
+            },
+            {
+              "src": 1,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 6
+            },
+            {
+              "src": 2,
+              "label": "t0",
+              "dst": 5
+            },
+            {
+              "src": 3,
+              "label": "t0",
+              "dst": 6
+            },
+            {
+              "src": 4,
+              "label": "t1",
+              "dst": 7
+            },
+            {
+              "src": 4,
+              "label": "t2",
+              "dst": 8
+            },
+            {
+              "src": 5,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 5,
+              "label": "t3",
+              "dst": 9
+            },
+            {
+              "src": 6,
+              "label": "t0",
+              "dst": 8
+            },
+            {
+              "src": 6,
+              "label": "t4",
+              "dst": 9
+            },
+            {
+              "src": 7,
+              "label": "t3",
+              "dst": 10
+            },
+            {
+              "src": 8,
+              "label": "t4",
+              "dst": 10
+            },
+            {
+              "src": 9,
+              "label": "t0",
+              "dst": 10
+            },
+            {
+              "src": 9,
+              "label": "t5",
+              "dst": 11
+            },
+            {
+              "src": 10,
+              "label": "t5",
+              "dst": 12
+            },
+            {
+              "src": 11,
+              "label": "t0",
+              "dst": 12
+            },
+            {
+              "src": 11,
+              "label": "t6",
+              "dst": 13
+            },
+            {
+              "src": 12,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 12,
+              "label": "t6",
+              "dst": 15
+            },
+            {
+              "src": 13,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 14,
+              "label": "t6",
+              "dst": 4
+            },
+            {
+              "src": 15,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 15,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 15,
+              "label": "t2",
+              "dst": 6
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t0"
+            ],
+            "2": [
+              "t1"
+            ],
+            "3": [
+              "t2"
+            ],
+            "4": [
+              "t0",
+              "t0"
+            ],
+            "5": [
+              "t0",
+              "t1"
+            ],
+            "6": [
+              "t0",
+              "t2"
+            ],
+            "7": [
+              "t0",
+              "t0",
+              "t1"
+            ],
+            "8": [
+              "t0",
+              "t0",
+              "t2"
+            ],
+            "9": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "10": [
+              "t0",
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "11": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "12": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "13": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "14": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "15": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -M -aut sources/wangTAC.net",
+          "returncode": 0
+        },
+        "-W": {
+          "states": 38,
+          "edge_count": 63,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 0,
+              "label": "t2",
+              "dst": 3
+            },
+            {
+              "src": 1,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 6
+            },
+            {
+              "src": 2,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 3,
+              "label": "t0",
+              "dst": 8
+            },
+            {
+              "src": 4,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 4,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 5,
+              "label": "t0",
+              "dst": 11
+            },
+            {
+              "src": 5,
+              "label": "t3",
+              "dst": 12
+            },
+            {
+              "src": 6,
+              "label": "t0",
+              "dst": 13
+            },
+            {
+              "src": 6,
+              "label": "t4",
+              "dst": 14
+            },
+            {
+              "src": 7,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 7,
+              "label": "t3",
+              "dst": 12
+            },
+            {
+              "src": 8,
+              "label": "t0",
+              "dst": 16
+            },
+            {
+              "src": 8,
+              "label": "t4",
+              "dst": 14
+            },
+            {
+              "src": 9,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 10,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 11,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 12,
+              "label": "t0",
+              "dst": 18
+            },
+            {
+              "src": 12,
+              "label": "t5",
+              "dst": 19
+            },
+            {
+              "src": 13,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 14,
+              "label": "t0",
+              "dst": 18
+            },
+            {
+              "src": 14,
+              "label": "t5",
+              "dst": 20
+            },
+            {
+              "src": 15,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 16,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 17,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 18,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 19,
+              "label": "t0",
+              "dst": 22
+            },
+            {
+              "src": 19,
+              "label": "t6",
+              "dst": 23
+            },
+            {
+              "src": 20,
+              "label": "t0",
+              "dst": 21
+            },
+            {
+              "src": 21,
+              "label": "t0",
+              "dst": 24
+            },
+            {
+              "src": 21,
+              "label": "t6",
+              "dst": 25
+            },
+            {
+              "src": 22,
+              "label": "t0",
+              "dst": 24
+            },
+            {
+              "src": 22,
+              "label": "t6",
+              "dst": 26
+            },
+            {
+              "src": 23,
+              "label": "t0",
+              "dst": 27
+            },
+            {
+              "src": 24,
+              "label": "t6",
+              "dst": 28
+            },
+            {
+              "src": 25,
+              "label": "t0",
+              "dst": 29
+            },
+            {
+              "src": 25,
+              "label": "t1",
+              "dst": 30
+            },
+            {
+              "src": 25,
+              "label": "t2",
+              "dst": 31
+            },
+            {
+              "src": 26,
+              "label": "t0",
+              "dst": 29
+            },
+            {
+              "src": 26,
+              "label": "t1",
+              "dst": 32
+            },
+            {
+              "src": 26,
+              "label": "t2",
+              "dst": 33
+            },
+            {
+              "src": 27,
+              "label": "t0",
+              "dst": 34
+            },
+            {
+              "src": 27,
+              "label": "t1",
+              "dst": 32
+            },
+            {
+              "src": 27,
+              "label": "t2",
+              "dst": 33
+            },
+            {
+              "src": 28,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 28,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 29,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 29,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 30,
+              "label": "t0",
+              "dst": 35
+            },
+            {
+              "src": 31,
+              "label": "t0",
+              "dst": 36
+            },
+            {
+              "src": 32,
+              "label": "t0",
+              "dst": 11
+            },
+            {
+              "src": 32,
+              "label": "t3",
+              "dst": 37
+            },
+            {
+              "src": 33,
+              "label": "t0",
+              "dst": 13
+            },
+            {
+              "src": 33,
+              "label": "t4",
+              "dst": 37
+            },
+            {
+              "src": 34,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 34,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 35,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 36,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 37,
+              "label": "t0",
+              "dst": 17
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t0"
+            ],
+            "2": [
+              "t1"
+            ],
+            "3": [
+              "t2"
+            ],
+            "4": [
+              "t0",
+              "t0"
+            ],
+            "5": [
+              "t0",
+              "t1"
+            ],
+            "6": [
+              "t0",
+              "t2"
+            ],
+            "7": [
+              "t1",
+              "t0"
+            ],
+            "8": [
+              "t2",
+              "t0"
+            ],
+            "9": [
+              "t0",
+              "t0",
+              "t1"
+            ],
+            "10": [
+              "t0",
+              "t0",
+              "t2"
+            ],
+            "11": [
+              "t0",
+              "t1",
+              "t0"
+            ],
+            "12": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "13": [
+              "t0",
+              "t2",
+              "t0"
+            ],
+            "14": [
+              "t0",
+              "t2",
+              "t4"
+            ],
+            "15": [
+              "t1",
+              "t0",
+              "t0"
+            ],
+            "16": [
+              "t2",
+              "t0",
+              "t0"
+            ],
+            "17": [
+              "t0",
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "18": [
+              "t0",
+              "t1",
+              "t3",
+              "t0"
+            ],
+            "19": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "20": [
+              "t0",
+              "t2",
+              "t4",
+              "t5"
+            ],
+            "21": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "22": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "23": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "24": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "25": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "26": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "27": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0"
+            ],
+            "28": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "29": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0"
+            ],
+            "30": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1"
+            ],
+            "31": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2"
+            ],
+            "32": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1"
+            ],
+            "33": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t2"
+            ],
+            "34": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t0",
+              "t0"
+            ],
+            "35": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1",
+              "t0"
+            ],
+            "36": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2",
+              "t0"
+            ],
+            "37": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1",
+              "t3"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -W -aut sources/wangTAC.net",
+          "returncode": 0
+        },
+        "-A": {
+          "states": 33,
+          "edge_count": 78,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 2
+            },
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 3
+            },
+            {
+              "src": 0,
+              "label": "t0",
+              "dst": 4
+            },
+            {
+              "src": 0,
+              "label": "t1",
+              "dst": 5
+            },
+            {
+              "src": 0,
+              "label": "t2",
+              "dst": 6
+            },
+            {
+              "src": 1,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 8
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 9
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 11
+            },
+            {
+              "src": 1,
+              "label": "t2",
+              "dst": 12
+            },
+            {
+              "src": 2,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 2,
+              "label": "t1",
+              "dst": 13
+            },
+            {
+              "src": 2,
+              "label": "t1",
+              "dst": 8
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 11
+            },
+            {
+              "src": 3,
+              "label": "t1",
+              "dst": 13
+            },
+            {
+              "src": 3,
+              "label": "t1",
+              "dst": 8
+            },
+            {
+              "src": 3,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 3,
+              "label": "t2",
+              "dst": 11
+            },
+            {
+              "src": 4,
+              "label": "t1",
+              "dst": 13
+            },
+            {
+              "src": 4,
+              "label": "t2",
+              "dst": 10
+            },
+            {
+              "src": 5,
+              "label": "t0",
+              "dst": 13
+            },
+            {
+              "src": 6,
+              "label": "t0",
+              "dst": 10
+            },
+            {
+              "src": 7,
+              "label": "t1",
+              "dst": 14
+            },
+            {
+              "src": 7,
+              "label": "t2",
+              "dst": 15
+            },
+            {
+              "src": 8,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 8,
+              "label": "t3",
+              "dst": 16
+            },
+            {
+              "src": 8,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 9,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 9,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 10,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 10,
+              "label": "t4",
+              "dst": 16
+            },
+            {
+              "src": 10,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 11,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 11,
+              "label": "t4",
+              "dst": 17
+            },
+            {
+              "src": 12,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 13,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 13,
+              "label": "t3",
+              "dst": 18
+            },
+            {
+              "src": 13,
+              "label": "t3",
+              "dst": 16
+            },
+            {
+              "src": 13,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 14,
+              "label": "t3",
+              "dst": 19
+            },
+            {
+              "src": 15,
+              "label": "t4",
+              "dst": 19
+            },
+            {
+              "src": 16,
+              "label": "t0",
+              "dst": 19
+            },
+            {
+              "src": 16,
+              "label": "t5",
+              "dst": 20
+            },
+            {
+              "src": 17,
+              "label": "t0",
+              "dst": 19
+            },
+            {
+              "src": 18,
+              "label": "t0",
+              "dst": 19
+            },
+            {
+              "src": 18,
+              "label": "t5",
+              "dst": 21
+            },
+            {
+              "src": 19,
+              "label": "t5",
+              "dst": 22
+            },
+            {
+              "src": 20,
+              "label": "t0",
+              "dst": 22
+            },
+            {
+              "src": 21,
+              "label": "t0",
+              "dst": 22
+            },
+            {
+              "src": 21,
+              "label": "t0",
+              "dst": 23
+            },
+            {
+              "src": 21,
+              "label": "t6",
+              "dst": 24
+            },
+            {
+              "src": 22,
+              "label": "t0",
+              "dst": 25
+            },
+            {
+              "src": 22,
+              "label": "t6",
+              "dst": 26
+            },
+            {
+              "src": 22,
+              "label": "t6",
+              "dst": 27
+            },
+            {
+              "src": 23,
+              "label": "t0",
+              "dst": 25
+            },
+            {
+              "src": 23,
+              "label": "t6",
+              "dst": 28
+            },
+            {
+              "src": 23,
+              "label": "t6",
+              "dst": 26
+            },
+            {
+              "src": 24,
+              "label": "t0",
+              "dst": 28
+            },
+            {
+              "src": 25,
+              "label": "t6",
+              "dst": 7
+            },
+            {
+              "src": 26,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 26,
+              "label": "t1",
+              "dst": 29
+            },
+            {
+              "src": 26,
+              "label": "t2",
+              "dst": 30
+            },
+            {
+              "src": 27,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 27,
+              "label": "t2",
+              "dst": 30
+            },
+            {
+              "src": 28,
+              "label": "t0",
+              "dst": 7
+            },
+            {
+              "src": 28,
+              "label": "t1",
+              "dst": 31
+            },
+            {
+              "src": 28,
+              "label": "t1",
+              "dst": 29
+            },
+            {
+              "src": 28,
+              "label": "t2",
+              "dst": 32
+            },
+            {
+              "src": 28,
+              "label": "t2",
+              "dst": 30
+            },
+            {
+              "src": 29,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 30,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 31,
+              "label": "t0",
+              "dst": 14
+            },
+            {
+              "src": 31,
+              "label": "t3",
+              "dst": 17
+            },
+            {
+              "src": 32,
+              "label": "t0",
+              "dst": 15
+            },
+            {
+              "src": 32,
+              "label": "t4",
+              "dst": 17
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t0",
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t0"
+            ],
+            "2": [
+              "t0"
+            ],
+            "3": [
+              "t0"
+            ],
+            "4": [
+              "t0"
+            ],
+            "5": [
+              "t1"
+            ],
+            "6": [
+              "t2"
+            ],
+            "7": [
+              "t0",
+              "t0"
+            ],
+            "8": [
+              "t0",
+              "t1"
+            ],
+            "9": [
+              "t0",
+              "t1"
+            ],
+            "10": [
+              "t0",
+              "t2"
+            ],
+            "11": [
+              "t0",
+              "t2"
+            ],
+            "12": [
+              "t0",
+              "t2"
+            ],
+            "13": [
+              "t0",
+              "t1"
+            ],
+            "14": [
+              "t0",
+              "t0",
+              "t1"
+            ],
+            "15": [
+              "t0",
+              "t0",
+              "t2"
+            ],
+            "16": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "17": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "18": [
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "19": [
+              "t0",
+              "t0",
+              "t1",
+              "t3"
+            ],
+            "20": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "21": [
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "22": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5"
+            ],
+            "23": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "24": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "25": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0"
+            ],
+            "26": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "27": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6"
+            ],
+            "28": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6"
+            ],
+            "29": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t1"
+            ],
+            "30": [
+              "t0",
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t6",
+              "t2"
+            ],
+            "31": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t1"
+            ],
+            "32": [
+              "t0",
+              "t1",
+              "t3",
+              "t5",
+              "t0",
+              "t6",
+              "t2"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -A -aut sources/wangTAC.net",
+          "returncode": 0
+        }
+      },
+      "failures": [],
+      "model_json": "models/wangTAC.json",
+      "model_id": "wangTAC",
+      "table41": {
+        "rows": [
+          {
+            "class": "alpha0",
+            "tina_W_class": 0,
+            "marking": {
+              "expected": {
+                "p1": 1,
+                "p2": 2
+              },
+              "tina": {
+                "p1": 1,
+                "p2": 2
+              }
+            },
+            "matches": true,
+            "domain_checks": [
+              {
+                "variable": "t0",
+                "expected": [
+                  1,
+                  4
+                ],
+                "tina": [
+                  "1",
+                  "4"
+                ],
+                "match": true
+              },
+              {
+                "variable": "t1",
+                "expected": [
+                  2,
+                  3
+                ],
+                "tina": [
+                  "2",
+                  "3"
+                ],
+                "match": true
+              },
+              {
+                "variable": "t2",
+                "expected": [
+                  1,
+                  4
+                ],
+                "tina": [
+                  "1",
+                  "4"
+                ],
+                "match": true
+              }
+            ]
+          },
+          {
+            "class": "alpha1",
+            "tina_W_class": 1,
+            "marking": {
+              "expected": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              },
+              "tina": {
+                "p1": 1,
+                "p2": 1,
+                "p5": 1
+              }
+            },
+            "matches": true,
+            "domain_checks": [
+              {
+                "variable": "t0",
+                "expected": [
+                  1,
+                  4
+                ],
+                "tina": [
+                  "1",
+                  "4"
+                ],
+                "match": true
+              },
+              {
+                "variable": "t1",
+                "expected": [
+                  0,
+                  2
+                ],
+                "tina": [
+                  "0",
+                  "2"
+                ],
+                "match": true
+              },
+              {
+                "variable": "t2",
+                "expected": [
+                  0,
+                  3
+                ],
+                "tina": [
+                  "0",
+                  "3"
+                ],
+                "match": true
+              },
+              {
+                "constraint": "t2 - t1 <= 2",
+                "tina": "2",
+                "match": true
+              }
+            ]
+          },
+          {
+            "class": "alpha2",
+            "tina_W_class": 2,
+            "marking": {
+              "expected": {
+                "p2": 2,
+                "p4": 1
+              },
+              "tina": {
+                "p2": 2,
+                "p4": 1
+              }
+            },
+            "matches": true,
+            "domain_checks": [
+              {
+                "variable": "t0",
+                "expected": [
+                  0,
+                  2
+                ],
+                "tina": [
+                  "0",
+                  "2"
+                ],
+                "match": true
+              }
+            ]
+          },
+          {
+            "class": "alpha3",
+            "tina_W_class": 3,
+            "marking": {
+              "expected": {
+                "p2": 2,
+                "p3": 1
+              },
+              "tina": {
+                "p2": 2,
+                "p3": 1
+              }
+            },
+            "matches": true,
+            "domain_checks": [
+              {
+                "variable": "t0",
+                "expected": [
+                  0,
+                  3
+                ],
+                "tina": [
+                  "0",
+                  "3"
+                ],
+                "match": true
+              }
+            ]
+          },
+          {
+            "class": "alpha7",
+            "tina_W_class": 7,
+            "marking": {
+              "expected": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              },
+              "tina": {
+                "p2": 1,
+                "p4": 1,
+                "p5": 1
+              }
+            },
+            "matches": true,
+            "domain_checks": [
+              {
+                "variable": "t0",
+                "expected": [
+                  1,
+                  4
+                ],
+                "tina": [
+                  "1",
+                  "4"
+                ],
+                "match": true
+              },
+              {
+                "variable": "t3",
+                "expected": [
+                  2,
+                  5
+                ],
+                "tina": [
+                  "2",
+                  "5"
+                ],
+                "match": true
+              }
+            ]
+          },
+          {
+            "class": "alpha8",
+            "tina_W_class": 8,
+            "marking": {
+              "expected": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              },
+              "tina": {
+                "p2": 1,
+                "p3": 1,
+                "p5": 1
+              }
+            },
+            "matches": true,
+            "domain_checks": [
+              {
+                "variable": "t0",
+                "expected": [
+                  1,
+                  4
+                ],
+                "tina": [
+                  "1",
+                  "4"
+                ],
+                "match": true
+              },
+              {
+                "variable": "t4",
+                "expected": [
+                  3,
+                  5
+                ],
+                "tina": [
+                  "3",
+                  "5"
+                ],
+                "match": true
+              }
+            ]
+          }
+        ],
+        "all_match": true
+      },
+      "comparison_vs_scg": {
+        "available": true,
+        "scg": {
+          "source": "models/scg_result.json",
+          "model": "wangTAC",
+          "classes": 38,
+          "edges": 63,
+          "truncated": false,
+          "reachable_markings": 14
+        },
+        "rows": {
+          "-S": {
+            "tina_states": 42,
+            "tina_transitions": 69,
+            "scg_classes": 38,
+            "scg_edges": 63,
+            "states_match": false,
+            "transitions_match": false
+          },
+          "-E": {
+            "tina_states": 18,
+            "tina_transitions": 32,
+            "scg_classes": 38,
+            "scg_edges": 63,
+            "states_match": false,
+            "transitions_match": false
+          },
+          "-M": {
+            "tina_states": 16,
+            "tina_transitions": 28,
+            "scg_classes": 38,
+            "scg_edges": 63,
+            "states_match": false,
+            "transitions_match": false
+          },
+          "-W": {
+            "tina_states": 38,
+            "tina_transitions": 63,
+            "scg_classes": 38,
+            "scg_edges": 63,
+            "states_match": true,
+            "transitions_match": true
+          },
+          "-A": {
+            "tina_states": 33,
+            "tina_transitions": 78,
+            "scg_classes": 38,
+            "scg_edges": 63,
+            "states_match": false,
+            "transitions_match": false
+          },
+          "-R": {
+            "tina_states": 24,
+            "tina_transitions": 48,
+            "scg_classes": 38,
+            "scg_edges": 63,
+            "states_match": false,
+            "transitions_match": false
+          }
+        },
+        "matching_modes": [
+          "-W"
+        ],
+        "note": "pipeline/scg.py is the classical Berthomieu-Menasche linear state class graph, so it matches TINA -W (not the finer -S/-E zone graph and not the marking-only -M abstraction)."
+      }
+    },
+    "basileTAC": {
+      "net_file": "basileTAC.net",
+      "net_path": "sources/basileTAC.net",
+      "tina_binary": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina",
+      "tina_version": "Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS",
+      "header": {
+        "places": 5,
+        "transitions": 7,
+        "arcs": 14
+      },
+      "modes": {
+        "-p": {
+          "mode": "-p",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": null,
+          "summary_kind": null,
+          "states": null,
+          "state_transitions": null,
+          "possibly_live": null,
+          "possibly_reversible": null,
+          "summary_table": {},
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -p sources/basileTAC.net",
+          "classes": []
+        },
+        "-S": {
+          "mode": "-S",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 5,
+          "state_transitions": 7,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 5,
+              "props": 5
+            },
+            "transitions": {
+              "count": 7,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -S sources/basileTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p0": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p3": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t7",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p4": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            }
+          ]
+        },
+        "-E": {
+          "mode": "-E",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 5,
+          "state_transitions": 7,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 5,
+              "props": 5
+            },
+            "transitions": {
+              "count": 7,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -E sources/basileTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p0": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 0,
+                  "hi": 0
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p3": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t7",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p4": 1
+              },
+              "kind": "clock space",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 0,
+                  "hi": 0
+                }
+              ]
+            }
+          ]
+        },
+        "-M": {
+          "mode": "-M",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 5,
+          "state_transitions": 7,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 5,
+              "props": 5
+            },
+            "transitions": {
+              "count": 7,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -M sources/basileTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p0": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 2,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p3": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t7",
+                  "lo": 1,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p4": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            }
+          ]
+        },
+        "-W": {
+          "mode": "-W",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 5,
+          "state_transitions": 7,
+          "possibly_live": true,
+          "possibly_reversible": true,
+          "summary_table": {
+            "states": {
+              "count": 5,
+              "props": 5
+            },
+            "transitions": {
+              "count": 7,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -W sources/basileTAC.net",
+          "classes": [
+            {
+              "id": 0,
+              "marking": {
+                "p0": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t4",
+                  "lo": 2,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t5",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 1,
+              "marking": {
+                "p1": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t1",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "marking": {
+                "p2": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t2",
+                  "lo": 1,
+                  "hi": 2
+                },
+                {
+                  "kind": "interval",
+                  "variable": "t6",
+                  "lo": 0,
+                  "hi": 2
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "marking": {
+                "p3": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t7",
+                  "lo": 1,
+                  "hi": 1
+                }
+              ]
+            },
+            {
+              "id": 4,
+              "marking": {
+                "p4": 1
+              },
+              "kind": "domain",
+              "constraints": [
+                {
+                  "kind": "interval",
+                  "variable": "t3",
+                  "lo": 1,
+                  "hi": 2
+                }
+              ]
+            }
+          ]
+        },
+        "-A": {
+          "mode": "-A",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": true,
+          "summary_kind": "classe",
+          "states": 5,
+          "state_transitions": 7,
+          "possibly_live": true,
+          "possibly_reversible": null,
+          "summary_table": {
+            "states": {
+              "count": 5,
+              "props": 5
+            },
+            "transitions": {
+              "count": 7,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -A sources/basileTAC.net"
+        },
+        "-R": {
+          "mode": "-R",
+          "parsed": true,
+          "net_header": null,
+          "places": 5,
+          "transitions": 7,
+          "arcs": 14,
+          "bounded": true,
+          "summary_kind": "marking",
+          "states": 5,
+          "state_transitions": 7,
+          "possibly_live": true,
+          "possibly_reversible": null,
+          "summary_table": {
+            "states": {
+              "count": 5,
+              "props": 5
+            },
+            "transitions": {
+              "count": 7,
+              "props": 7
+            }
+          },
+          "error_line": null,
+          "returncode": 0,
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -R sources/basileTAC.net"
+        }
+      },
+      "aut": {
+        "default": {
+          "states": 5,
+          "edge_count": 7,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t4",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t5",
+              "dst": 2
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 0
+            },
+            {
+              "src": 2,
+              "label": "t6",
+              "dst": 3
+            },
+            {
+              "src": 3,
+              "label": "t7",
+              "dst": 4
+            },
+            {
+              "src": 4,
+              "label": "t3",
+              "dst": 0
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t4"
+            ],
+            "2": [
+              "t5"
+            ],
+            "3": [
+              "t5",
+              "t6"
+            ],
+            "4": [
+              "t5",
+              "t6",
+              "t7"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -aut sources/basileTAC.net",
+          "returncode": 0
+        },
+        "-S": {
+          "states": 5,
+          "edge_count": 7,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t4",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t5",
+              "dst": 2
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 0
+            },
+            {
+              "src": 2,
+              "label": "t6",
+              "dst": 3
+            },
+            {
+              "src": 3,
+              "label": "t7",
+              "dst": 4
+            },
+            {
+              "src": 4,
+              "label": "t3",
+              "dst": 0
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t4"
+            ],
+            "2": [
+              "t5"
+            ],
+            "3": [
+              "t5",
+              "t6"
+            ],
+            "4": [
+              "t5",
+              "t6",
+              "t7"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -S -aut sources/basileTAC.net",
+          "returncode": 0
+        },
+        "-E": {
+          "states": 5,
+          "edge_count": 7,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t4",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t5",
+              "dst": 2
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 0
+            },
+            {
+              "src": 2,
+              "label": "t6",
+              "dst": 3
+            },
+            {
+              "src": 3,
+              "label": "t7",
+              "dst": 4
+            },
+            {
+              "src": 4,
+              "label": "t3",
+              "dst": 0
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t4"
+            ],
+            "2": [
+              "t5"
+            ],
+            "3": [
+              "t5",
+              "t6"
+            ],
+            "4": [
+              "t5",
+              "t6",
+              "t7"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -E -aut sources/basileTAC.net",
+          "returncode": 0
+        },
+        "-M": {
+          "states": 5,
+          "edge_count": 7,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t4",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t5",
+              "dst": 2
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 0
+            },
+            {
+              "src": 2,
+              "label": "t6",
+              "dst": 3
+            },
+            {
+              "src": 3,
+              "label": "t7",
+              "dst": 4
+            },
+            {
+              "src": 4,
+              "label": "t3",
+              "dst": 0
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t4"
+            ],
+            "2": [
+              "t5"
+            ],
+            "3": [
+              "t5",
+              "t6"
+            ],
+            "4": [
+              "t5",
+              "t6",
+              "t7"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -M -aut sources/basileTAC.net",
+          "returncode": 0
+        },
+        "-W": {
+          "states": 5,
+          "edge_count": 7,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t4",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t5",
+              "dst": 2
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 0
+            },
+            {
+              "src": 2,
+              "label": "t6",
+              "dst": 3
+            },
+            {
+              "src": 3,
+              "label": "t7",
+              "dst": 4
+            },
+            {
+              "src": 4,
+              "label": "t3",
+              "dst": 0
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t4"
+            ],
+            "2": [
+              "t5"
+            ],
+            "3": [
+              "t5",
+              "t6"
+            ],
+            "4": [
+              "t5",
+              "t6",
+              "t7"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -W -aut sources/basileTAC.net",
+          "returncode": 0
+        },
+        "-A": {
+          "states": 5,
+          "edge_count": 7,
+          "edges": [
+            {
+              "src": 0,
+              "label": "t4",
+              "dst": 1
+            },
+            {
+              "src": 0,
+              "label": "t5",
+              "dst": 2
+            },
+            {
+              "src": 1,
+              "label": "t1",
+              "dst": 2
+            },
+            {
+              "src": 2,
+              "label": "t2",
+              "dst": 0
+            },
+            {
+              "src": 2,
+              "label": "t6",
+              "dst": 3
+            },
+            {
+              "src": 3,
+              "label": "t7",
+              "dst": 4
+            },
+            {
+              "src": 4,
+              "label": "t3",
+              "dst": 0
+            }
+          ],
+          "initial_state": 0,
+          "labels": [
+            "t1",
+            "t2",
+            "t3",
+            "t4",
+            "t5",
+            "t6",
+            "t7"
+          ],
+          "label_sequences_to_state": {
+            "0": [],
+            "1": [
+              "t4"
+            ],
+            "2": [
+              "t5"
+            ],
+            "3": [
+              "t5",
+              "t6"
+            ],
+            "4": [
+              "t5",
+              "t6",
+              "t7"
+            ]
+          },
+          "cmd": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina -A -aut sources/basileTAC.net",
+          "returncode": 0
+        }
+      },
+      "failures": [],
+      "model_json": "models/basileTAC.json",
+      "model_id": "basileTAC"
+    }
+  },
+  "comparison": {
+    "scg": {
+      "available": true,
+      "scg": {
+        "source": "models/scg_result.json",
+        "model": "wangTAC",
+        "classes": 38,
+        "edges": 63,
+        "truncated": false,
+        "reachable_markings": 14
+      },
+      "rows": {},
+      "matching_modes": [],
+      "note": "pipeline/scg.py is the classical Berthomieu-Menasche linear state class graph, so it matches TINA -W (not the finer -S/-E zone graph and not the marking-only -M abstraction)."
+    }
+  },
+  "summary_counts": {
+    "wangTAC": {
+      "-S": [
+        42,
+        69
+      ],
+      "-E": [
+        18,
+        32
+      ],
+      "-M": [
+        16,
+        28
+      ],
+      "-W": [
+        38,
+        63
+      ],
+      "-A": [
+        33,
+        78
+      ],
+      "-R": [
+        24,
+        48
+      ]
+    },
+    "basileTAC": {
+      "-S": [
+        5,
+        7
+      ],
+      "-E": [
+        5,
+        7
+      ],
+      "-M": [
+        5,
+        7
+      ],
+      "-W": [
+        5,
+        7
+      ],
+      "-A": [
+        5,
+        7
+      ],
+      "-R": [
+        5,
+        7
+      ]
+    }
+  }
+}

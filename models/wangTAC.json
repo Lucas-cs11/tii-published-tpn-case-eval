@@ -1,0 +1,219 @@
+{
+ "schema": "tii-tpn-model/1",
+ "id": "wangTAC",
+ "display_name": "Wang, Mahulea, Silva (IEEE TAC 2015) - Fig. 4.1(a) of Xu Wang PhD thesis",
+ "provenance": {
+  "kind": "published_original",
+  "paper": "Wang, Mahulea, Silva, Diagnosis of Time Petri Nets Using Fault Diagnosis Graph, IEEE Trans. Autom. Control 60(9), 2015, DOI 10.1109/TAC.2015.2405293",
+  "doi": "10.1109/TAC.2015.2405293",
+  "source_url": "https://projects.laas.fr/twina/files/wangTAC.net",
+  "sha256": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f",
+  "bytes": 217,
+  "downloaded_utc": null,
+  "http_status": null,
+  "authoritative": false,
+  "adaptations": [],
+  "note": "sha256/bytes are of the local development copy until the GitHub Actions download record is merged with --provenance"
+ },
+ "places": [
+  {
+   "id": "p1",
+   "initial": 1
+  },
+  {
+   "id": "p2",
+   "initial": 2
+  },
+  {
+   "id": "p3",
+   "initial": 0
+  },
+  {
+   "id": "p4",
+   "initial": 0
+  },
+  {
+   "id": "p5",
+   "initial": 0
+  },
+  {
+   "id": "p6",
+   "initial": 0
+  },
+  {
+   "id": "p7",
+   "initial": 0
+  }
+ ],
+ "transitions": [
+  {
+   "id": "t0",
+   "label": "a",
+   "observable": true,
+   "fault": false,
+   "earliest": 1,
+   "latest": 4,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p2": 1
+   },
+   "outputs": {
+    "p5": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t1",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 2,
+   "latest": 3,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p1": 1
+   },
+   "outputs": {
+    "p4": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t2",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 4,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p1": 1
+   },
+   "outputs": {
+    "p3": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t3",
+   "label": "f",
+   "observable": false,
+   "fault": true,
+   "earliest": 2,
+   "latest": 5,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p4": 1,
+    "p5": 1
+   },
+   "outputs": {
+    "p6": 1,
+    "p7": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t4",
+   "label": "b",
+   "observable": true,
+   "fault": false,
+   "earliest": 3,
+   "latest": 5,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p3": 1,
+    "p5": 1
+   },
+   "outputs": {
+    "p6": 1,
+    "p7": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t5",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 1,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p7": 1
+   },
+   "outputs": {
+    "p2": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t6",
+   "label": "c",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 4,
+   "earliest_open": false,
+   "latest_open": false,
+   "inputs": {
+    "p6": 1
+   },
+   "outputs": {
+    "p1": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  }
+ ],
+ "finish_markings": [],
+ "special_features": {
+  "read_arcs": false,
+  "inhibitor_arcs": false,
+  "stopwatch_arcs": false,
+  "priority_rules": false,
+  "multi_server": false,
+  "unbounded": false
+ },
+ "extensions": {
+  "tina_net_version": "1.0",
+  "place_labels": {},
+  "notes": [],
+  "label_semantics": "label != '' is an observable event label; the label 'f' is the LAAS/TWINA fault annotation and marks an unobservable fault transition, hence special_features/observable exclude it. Unlabelled transitions are epsilon (unobservable).",
+  "multi_server_note": "special_features.multi_server=false: PROTOCOL.md section 1 single-server strong-time semantics is used (one clock per transition); TINA 4.0.0 builds its state class graphs with the same one-variable-per-transition convention for these nets",
+  "tina_parse": {
+   "tool": "pipeline/tina_net.py",
+   "tool_version": "1.0",
+   "net_file": "wangTAC.net",
+   "net_declaration_name": "wangTAC",
+   "places": 7,
+   "transitions": 7,
+   "arcs": 18
+  }
+ }
+}

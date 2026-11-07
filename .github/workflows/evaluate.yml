@@ -1,0 +1,191 @@
+name: evaluate
+
+# End-to-end, reproducible evaluation of the published-TPN candidates.
+#   fetch   : authoritative downloads inside GitHub Actions (workflow_call)
+#   verify  : parser + exact Fraction oracle + independent SCG + TINA 4.0.0
+#             cross-check + adapted JAS 2026 manufacturing model
+#   package : SHA-256 manifest and deliverable zip (artifact)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "pipeline/**"
+      - "manufacturing/**"
+      - "tests/**"
+      - "models/**"
+      - ".github/workflows/evaluate.yml"
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  fetch:
+    uses: ./.github/workflows/fetch.yml
+
+  verify:
+    needs: fetch
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Install pytest
+        run: python -m pip install --quiet pytest
+      - name: Download authoritative sources
+        uses: actions/download-artifact@v4
+        with: {name: source-bundle, path: fetched}
+      - name: Install TINA 4.0.0 (Linux)
+        run: |
+          set -euo pipefail
+          mkdir -p tina
+          tar xzf fetched/tina-4.0.0-amd64-linux.tgz -C tina
+          TINA_BIN="$(find "$PWD/tina" -type f -name tina -perm -u+x | head -1)"
+          test -n "$TINA_BIN"
+          echo "TINA_BIN=$TINA_BIN" >> "$GITHUB_ENV"
+          echo "TINA_LIB=$(dirname "$(dirname "$TINA_BIN")")/lib" >> "$GITHUB_ENV"
+      - name: TINA sanity check on the published Wang model
+        run: |
+          set -euo pipefail
+          export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
+          "$TINA_BIN" -p fetched/wangTAC.net | tee tina_parse.log
+          grep -q "7 places, 7 transitions, 18 arcs" tina_parse.log
+      - name: Run end-to-end verification
+        run: |
+          set -o pipefail
+          export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
+          python pipeline/verify.py --fetched fetched --out results/verification.json | tee results/verification.log
+      - name: Run regression tests
+        run: |
+          set -o pipefail
+          export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
+          mkdir -p results/pytest
+          python -m pytest tests -q 2>&1 | tee results/pytest.log
+      - name: Write machine-readable run record
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os, subprocess, datetime
+          rec = {
+            "run_id": os.environ.get("GITHUB_RUN_ID"),
+            "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+            "repo": os.environ.get("GITHUB_REPOSITORY"),
+            "commit": subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip(),
+            "workflow": "evaluate",
+            "utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "tina_bin": os.environ.get("TINA_BIN"),
+          }
+          open("results/gha_run.json","w").write(json.dumps(rec, indent=1)+"\n")
+          PY
+      - name: Upload evaluation results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: evaluation-results
+          path: |
+            results/
+            models/
+            manufacturing/
+            fetched/download_log.json
+            fetched/SHA256SUMS
+            fetched/comparison.json
+            fetched/download_log.txt
+            tina_parse.log
+          if-no-files-found: warn
+          retention-days: 90
+
+  package:
+    needs: [fetch, verify]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - uses: actions/download-artifact@v4
+        with: {name: evaluation-results, path: evaluation}
+      - uses: actions/download-artifact@v4
+        with: {name: source-bundle, path: fetched}
+      - name: Build SHA-256 manifest
+        run: |
+          set -euo pipefail
+          python tools/make_manifest.py --root . --out MANIFEST.sha256
+      - name: Assemble deliverable zip
+        run: |
+          set -euo pipefail
+          python tools/make_deliverable.py --out TII_Published_TPN_Case_Comparison.zip
+          sha256sum TII_Published_TPN_Case_Comparison.zip
+      - name: Upload deliverable
+        uses: actions/upload-artifact@v4
+        with:
+          name: TII_Published_TPN_Case_Comparison
+          path: |
+            TII_Published_TPN_Case_Comparison.zip
+            MANIFEST.sha256
+          retention-days: 90
+
+  publish-evidence:
+    # The local agent sandbox cannot download large artifacts (objects host is
+    # blocked), so the small authoritative download evidence is committed back
+    # to the repository by the runner; it is then pulled by the Lead.
+    needs: [fetch, verify]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - name: Download authoritative sources
+        uses: actions/download-artifact@v4
+        with: {name: source-bundle, path: fetched}
+      - name: Download evaluation results
+        uses: actions/download-artifact@v4
+        with: {name: evaluation-results, path: evaluation}
+      - name: Record run id and evidence files
+        run: |
+          set -euo pipefail
+          mkdir -p sources/gha_evidence
+          for f in download_log.json download_log.txt SHA256SUMS comparison.json environment.txt step_summary.md; do
+            [ -f "fetched/$f" ] && cp "fetched/$f" "sources/gha_evidence/$f" || true
+          done
+          [ -d evaluation/results ] && cp -r evaluation/results results/gha || true
+          python - <<'PY'
+          import json, os, platform, datetime, subprocess
+          rec = {
+            "run_id": os.environ.get("GITHUB_RUN_ID"),
+            "run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
+            "repo": os.environ.get("GITHUB_REPOSITORY"),
+            "server_url": os.environ.get("GITHUB_SERVER_URL"),
+            "commit": subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip(),
+            "utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "event": os.environ.get("GITHUB_EVENT_NAME"),
+            "runner": f"{platform.system()} {platform.machine()}",
+          }
+          os.makedirs("sources/gha_evidence", exist_ok=True)
+          open("sources/gha_evidence/run.json","w").write(json.dumps(rec, indent=1)+"\n")
+          line = (f"| {rec['run_id']} | {rec['utc']} | `{rec['commit'][:12]}` | "
+                  f"{os.environ.get('GITHUB_SERVER_URL')}/{os.environ.get('GITHUB_REPOSITORY')}/actions/runs/{rec['run_id']} | PASS |\n")
+          header = "| run id | UTC | commit | URL | verdict |\n|---|---|---|---|---|\n"
+          p = "reports/gha_runs.md"
+          old = open(p).read() if os.path.exists(p) else header
+          if "| run id |" not in old:
+              old = header + old
+          open(p,"w").write(old + line)
+          PY
+      - name: Commit evidence back to main
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sources/gha_evidence reports/gha_runs.md results/gha 2>/dev/null || true
+          if git diff --cached --quiet; then echo "no evidence changes"; else
+            git commit -m "ci: authoritative GHA download evidence for run $GITHUB_RUN_ID"
+            git push origin HEAD:main
+          fi

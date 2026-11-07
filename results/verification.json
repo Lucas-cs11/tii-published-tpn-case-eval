@@ -1,0 +1,485 @@
+{
+ "run": {
+  "sources_dir": "/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/WorkingFiles/\u5728\u6295\u6587\u7ae0/TII_TPN/literature_tpn_case_eval/sources",
+  "tina": "/Volumes/tina-4.0.0/nd.app/Contents/MacOS/bin/tina",
+  "sections": [
+   {
+    "check": "parse:wangTAC.net",
+    "status": "PASS",
+    "places": 7,
+    "transitions": 7,
+    "arcs": 18,
+    "model": "/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/WorkingFiles/\u5728\u6295\u6587\u7ae0/TII_TPN/literature_tpn_case_eval/models/wangTAC.json"
+   },
+   {
+    "check": "parse:basileTAC.net",
+    "status": "PASS",
+    "places": 5,
+    "transitions": 7,
+    "arcs": 14,
+    "model": "/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/WorkingFiles/\u5728\u6295\u6587\u7ae0/TII_TPN/literature_tpn_case_eval/models/basileTAC.json"
+   },
+   {
+    "check": "wang:table_4_1_state_classes",
+    "status": "PASS",
+    "classes": 38,
+    "edges": 63,
+    "checks": [
+     {
+      "marking": {
+       "p1": 1,
+       "p2": 2
+      },
+      "expected": {
+       "t0": [
+        "1",
+        "4"
+       ],
+       "t1": [
+        "2",
+        "3"
+       ],
+       "t2": [
+        "1",
+        "4"
+       ]
+      },
+      "match": true
+     },
+     {
+      "marking": {
+       "p1": 1,
+       "p2": 1,
+       "p5": 1
+      },
+      "expected": {
+       "t1": [
+        "0",
+        "2"
+       ],
+       "t2": [
+        "0",
+        "3"
+       ],
+       "t0": [
+        "1",
+        "4"
+       ]
+      },
+      "match": true
+     },
+     {
+      "marking": {
+       "p2": 2,
+       "p4": 1
+      },
+      "expected": {
+       "t0": [
+        "0",
+        "2"
+       ]
+      },
+      "match": true
+     },
+     {
+      "marking": {
+       "p2": 2,
+       "p3": 1
+      },
+      "expected": {
+       "t0": [
+        "0",
+        "3"
+       ]
+      },
+      "match": true
+     },
+     {
+      "marking": {
+       "p2": 1,
+       "p4": 1,
+       "p5": 1
+      },
+      "expected": {
+       "t0": [
+        "1",
+        "4"
+       ],
+       "t3": [
+        "2",
+        "5"
+       ]
+      },
+      "match": true
+     },
+     {
+      "marking": {
+       "p2": 1,
+       "p3": 1,
+       "p5": 1
+      },
+      "expected": {
+       "t0": [
+        "1",
+        "4"
+       ],
+       "t4": [
+        "3",
+        "5"
+       ]
+      },
+      "match": true
+     }
+    ]
+   },
+   {
+    "check": "wang:example_4_1_firing_domain",
+    "status": "PASS",
+    "sequence": [
+     "t0",
+     "t1",
+     "t3"
+    ],
+    "gl": "4",
+    "gu": "7",
+    "expected": [
+     "4",
+     "7"
+    ]
+   },
+   {
+    "check": "basile:scg",
+    "status": "PASS",
+    "classes": 5,
+    "edges": 7,
+    "markings": 5
+   },
+   {
+    "check": "tina:wangTAC.net:class_graph_matches_-W",
+    "status": "PASS",
+    "ours": [
+     38,
+     63
+    ],
+    "tina_W": [
+     38,
+     63
+    ],
+    "tina_S": [
+     42,
+     69
+    ],
+    "tina_E": [
+     18,
+     32
+    ],
+    "tina_M": [
+     16,
+     28
+    ]
+   },
+   {
+    "check": "tina:basileTAC.net:class_graph_matches_-W",
+    "status": "PASS",
+    "ours": [
+     5,
+     7
+    ],
+    "tina_W": [
+     5,
+     7
+    ],
+    "tina_S": [
+     5,
+     7
+    ],
+    "tina_E": [
+     5,
+     7
+    ],
+    "tina_M": [
+     5,
+     7
+    ]
+   },
+   {
+    "check": "control_17P15T:corrected_scg_and_AMB",
+    "status": "PASS",
+    "places": 17,
+    "transitions": 15,
+    "scg_classes": 160,
+    "scg_edges": 245,
+    "truncated": false,
+    "reachable_markings": 73,
+    "critical_pair": {
+     "normal_interval": [
+      "30",
+      "45"
+     ],
+     "fault_interval": [
+      "30",
+      "45"
+     ],
+     "overlap": [
+      "30",
+      "45"
+     ],
+     "observable_word": [
+      "load_done",
+      "load_done",
+      "machining_done",
+      "transfer_done",
+      "machining_done",
+      "inspection_pass",
+      "transfer_done",
+      "inspection_pass",
+      "unload_done",
+      "unload_done"
+     ]
+    }
+   },
+   {
+    "check": "tina:control_17P15T:matches_-W",
+    "status": "PASS",
+    "ours": [
+     160,
+     245
+    ],
+    "tina_W": [
+     160,
+     245
+    ]
+   },
+   {
+    "check": "manufacturing:adapted_model_and_AMB_pair",
+    "status": "PASS",
+    "places": 21,
+    "transitions": 16,
+    "scg_classes": 613,
+    "scg_edges": 1013,
+    "scg_truncated": false,
+    "critical_pair": {
+     "observable_word": [
+      "machining_done",
+      "machining_done",
+      "transfer_done",
+      "machining2_done",
+      "transfer_done",
+      "transfer2_done",
+      "machining2_done",
+      "transfer2_done",
+      "inspection_pass",
+      "inspection_pass"
+     ],
+     "normal_sequence": [
+      "s1",
+      "c1",
+      "s2",
+      "s1",
+      "c2",
+      "s3",
+      "c1",
+      "s2",
+      "c2",
+      "c3",
+      "s4",
+      "s3",
+      "c4",
+      "s5",
+      "c3",
+      "c5",
+      "s4",
+      "s6",
+      "c4",
+      "s5",
+      "c6",
+      "c5",
+      "pass",
+      "s6",
+      "c6",
+      "pass"
+     ],
+     "faulty_sequence": [
+      "s1",
+      "c1",
+      "s2",
+      "s1",
+      "c2",
+      "tf",
+      "s3",
+      "rec",
+      "c1",
+      "s2",
+      "c2",
+      "c3",
+      "s4",
+      "s3",
+      "c4",
+      "s5",
+      "c3",
+      "c5",
+      "s4",
+      "s6",
+      "c4",
+      "s5",
+      "c6",
+      "c5",
+      "pass",
+      "s6",
+      "c6",
+      "pass"
+     ],
+     "normal_interval": [
+      "27",
+      "29"
+     ],
+     "faulty_interval": [
+      "27",
+      "29"
+     ],
+     "overlap": [
+      "27",
+      "29"
+     ],
+     "ambiguous": true
+    }
+   }
+  ],
+  "tina_stats": {
+   "wangTAC.net": {
+    "-M": {
+     "mode": "-M",
+     "states": 16,
+     "transitions": 28,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net wangTAC, 7 places, 7 transitions, 18 arcs                        #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states           16          7          ?          0         12 # ",
+      "# transitions           28          7          ?          0          7 #"
+     ]
+    },
+    "-E": {
+     "mode": "-E",
+     "states": 18,
+     "transitions": 32,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net wangTAC, 7 places, 7 transitions, 18 arcs                        #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states           18          7          ?          0         12 # ",
+      "# transitions           32          7          ?          0          7 #"
+     ]
+    },
+    "-S": {
+     "mode": "-S",
+     "states": 42,
+     "transitions": 69,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net wangTAC, 7 places, 7 transitions, 18 arcs                        #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states           42          7          ?          0         12 # ",
+      "# transitions           69          7          ?          0          7 #"
+     ]
+    },
+    "-W": {
+     "mode": "-W",
+     "states": 38,
+     "transitions": 63,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net wangTAC, 7 places, 7 transitions, 18 arcs                        #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states           38          7          ?          0         12 # ",
+      "# transitions           63          7          ?          0          7 #"
+     ]
+    }
+   },
+   "basileTAC.net": {
+    "-M": {
+     "mode": "-M",
+     "states": 5,
+     "transitions": 7,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net basileTAC, 5 places, 7 transitions, 14 arcs                      #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states            5          5          ?          0          5 # ",
+      "# transitions            7          7          ?          0          7 #"
+     ]
+    },
+    "-E": {
+     "mode": "-E",
+     "states": 5,
+     "transitions": 7,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net basileTAC, 5 places, 7 transitions, 14 arcs                      #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states            5          5          ?          0          5 # ",
+      "# transitions            7          7          ?          0          7 #"
+     ]
+    },
+    "-S": {
+     "mode": "-S",
+     "states": 5,
+     "transitions": 7,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net basileTAC, 5 places, 7 transitions, 14 arcs                      #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states            5          5          ?          0          5 # ",
+      "# transitions            7          7          ?          0          7 #"
+     ]
+    },
+    "-W": {
+     "mode": "-W",
+     "states": 5,
+     "transitions": 7,
+     "returncode": 0,
+     "log": [
+      "",
+      "ANALYSIS COMPLETED ---------------------------------------------- ",
+      "",
+      "# net basileTAC, 5 places, 7 transitions, 14 arcs                      #",
+      "# bounded, possibly live, possibly reversible                          #",
+      "# abstraction        count      props      psets       dead       live #",
+      "#      states            5          5          ?          0          5 # ",
+      "# transitions            7          7          ?          0          7 #"
+     ]
+    }
+   }
+  }
+ },
+ "failures": [],
+ "verdict": "PASS"
+}

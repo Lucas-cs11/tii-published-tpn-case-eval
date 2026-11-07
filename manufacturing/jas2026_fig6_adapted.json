@@ -1,0 +1,434 @@
+{
+ "schema": "tii-tpn-model/1",
+ "id": "jas2026_fig6_adapted",
+ "display_name": "Two-workpiece robotic cell, adapted from JAS 2026 Fig. 6 / TASE 2022",
+ "provenance": {
+  "kind": "adapted",
+  "paper": "Xiao, Gao, Wu, Huang, Admissible Heuristic Design for Optimally Scheduling Resource Allocation Systems With Generalized Timed Petri Nets, IEEE/CAA J. Autom. Sinica 13(7), 2026, DOI 10.1109/JAS.2025.125777",
+  "upstream": "Huang, Zhou, Abusorrah, Sedraoui, Scheduling Robotic Cellular Manufacturing Systems With Timed Petri Net, A* Search, and Admissible Heuristic Function, IEEE TASE 19(1), 2022, DOI 10.1109/TASE.2020.3026351",
+  "source_url": "https://github.com/PNOptimizer/NewHDesign/blob/main/bin/Debug/ChenFig6_111_matrix.txt",
+  "source_files": [
+   "manufacturing/source_data/ChenFig6_111_init.txt",
+   "manufacturing/source_data/ChenFig6_111_matrix.txt"
+  ],
+  "published_subnet": "J1 route: transitions t1..t6, place-timed, of JAS 2026 Fig. 6",
+  "adaptations": [
+   "place-timed activity places p6..p10 (durations 3,2,6,2,4 s) converted to transition-timed strong-time TPN via busy/ready split",
+   "single workpiece route replicated for lot size 2 (p_raw = 2 tokens)",
+   "J1 alternative route via M3/M4 omitted to keep the target size",
+   "observable completion labels added (published scheduling PN is unlabelled)",
+   "inspection station and pass/rework loop added (our extension)",
+   "unobservable gripper-slip fault tf and recovery rec added (our extension)",
+   "inspection duration 5 s, fault window [0,3] s and recovery [3,5] s are illustrative engineering parameters"
+  ]
+ },
+ "places": [
+  {
+   "id": "p_raw",
+   "initial": 2
+  },
+  {
+   "id": "a1",
+   "initial": 0
+  },
+  {
+   "id": "a2",
+   "initial": 0
+  },
+  {
+   "id": "a3",
+   "initial": 0
+  },
+  {
+   "id": "a4",
+   "initial": 0
+  },
+  {
+   "id": "a5",
+   "initial": 0
+  },
+  {
+   "id": "r1",
+   "initial": 0
+  },
+  {
+   "id": "r2",
+   "initial": 0
+  },
+  {
+   "id": "r3",
+   "initial": 0
+  },
+  {
+   "id": "r4",
+   "initial": 0
+  },
+  {
+   "id": "r5",
+   "initial": 0
+  },
+  {
+   "id": "p_R1",
+   "initial": 1
+  },
+  {
+   "id": "p_R2",
+   "initial": 1
+  },
+  {
+   "id": "p_R3",
+   "initial": 1
+  },
+  {
+   "id": "p_M1",
+   "initial": 2
+  },
+  {
+   "id": "p_M2",
+   "initial": 2
+  },
+  {
+   "id": "p_Ifree",
+   "initial": 1
+  },
+  {
+   "id": "a6",
+   "initial": 0
+  },
+  {
+   "id": "r6",
+   "initial": 0
+  },
+  {
+   "id": "p_slip",
+   "initial": 0
+  },
+  {
+   "id": "p_done",
+   "initial": 0
+  }
+ ],
+ "transitions": [
+  {
+   "id": "s1",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "p_raw": 1,
+    "p_R1": 1
+   },
+   "outputs": {
+    "a1": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "c1",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 3,
+   "latest": 3,
+   "inputs": {
+    "a1": 1
+   },
+   "outputs": {
+    "r1": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "s2",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r1": 1,
+    "p_M1": 1
+   },
+   "outputs": {
+    "a2": 1,
+    "p_R1": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "c2",
+   "label": "machining_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 2,
+   "inputs": {
+    "a2": 1
+   },
+   "outputs": {
+    "r2": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "s3",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r2": 1,
+    "p_R2": 1
+   },
+   "outputs": {
+    "a3": 1,
+    "p_M1": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "c3",
+   "label": "transfer_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 6,
+   "latest": 6,
+   "inputs": {
+    "a3": 1
+   },
+   "outputs": {
+    "r3": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "s4",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r3": 1,
+    "p_M2": 1
+   },
+   "outputs": {
+    "a4": 1,
+    "p_R2": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "c4",
+   "label": "machining2_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 2,
+   "inputs": {
+    "a4": 1
+   },
+   "outputs": {
+    "r4": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "s5",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r4": 1,
+    "p_R3": 1
+   },
+   "outputs": {
+    "a5": 1,
+    "p_M2": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "c5",
+   "label": "transfer2_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 4,
+   "latest": 4,
+   "inputs": {
+    "a5": 1
+   },
+   "outputs": {
+    "r5": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "s6",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r5": 1,
+    "p_Ifree": 1
+   },
+   "outputs": {
+    "a6": 1,
+    "p_R3": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "c6",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 4,
+   "latest": 6,
+   "inputs": {
+    "a6": 1
+   },
+   "outputs": {
+    "r6": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "pass",
+   "label": "inspection_pass",
+   "observable": true,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r6": 1
+   },
+   "outputs": {
+    "p_done": 1,
+    "p_Ifree": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "rw",
+   "label": "inspection_rework",
+   "observable": true,
+   "fault": false,
+   "earliest": 0,
+   "latest": 0,
+   "inputs": {
+    "r6": 1,
+    "p_M2": 1
+   },
+   "outputs": {
+    "a4": 1,
+    "p_Ifree": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "tf",
+   "label": "",
+   "observable": false,
+   "fault": true,
+   "earliest": 0,
+   "latest": 3,
+   "inputs": {
+    "a1": 1
+   },
+   "outputs": {
+    "p_slip": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "rec",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 3,
+   "inputs": {
+    "p_slip": 1
+   },
+   "outputs": {
+    "a1": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  }
+ ],
+ "finish_markings": [
+  {
+   "p_done": 2,
+   "p_R1": 1,
+   "p_R2": 1,
+   "p_R3": 1,
+   "p_M1": 2,
+   "p_M2": 2,
+   "p_Ifree": 1
+  }
+ ],
+ "special_features": {
+  "read_arcs": false,
+  "inhibitor_arcs": false,
+  "stopwatch_arcs": false,
+  "priority_rules": false,
+  "multi_server": false,
+  "unbounded": false
+ }
+}

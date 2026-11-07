@@ -1,0 +1,43 @@
+{
+  "schema": "tii-tpn-thesis-symbol-map/1",
+  "model": "wangTAC",
+  "source": "_refs/xuwang.txt (Xu Wang PhD thesis, 2016), Figure 4.1(a) and Table 4.1",
+  "net_to_thesis": {
+    "t0": "t1",
+    "t1": "epsilon2",
+    "t2": "epsilon3",
+    "t3": "epsilon4",
+    "t4": "t5",
+    "t5": "epsilon6",
+    "t6": "t7"
+  },
+  "thesis_to_net": {
+    "t1": "t0",
+    "epsilon2": "t1",
+    "epsilon3": "t2",
+    "epsilon4": "t3",
+    "t5": "t4",
+    "epsilon6": "t5",
+    "t7": "t6"
+  },
+  "fault_transition": "t3",
+  "fault_symbol": "epsilon4",
+  "fault_label_in_net": "f",
+  "observable_thesis": [
+    "t1",
+    "t5",
+    "t7"
+  ],
+  "unobservable_thesis": [
+    "epsilon2",
+    "epsilon3",
+    "epsilon4",
+    "epsilon6"
+  ],
+  "notes": [
+    "Thesis transitions t1,t5,t7 correspond to the three labelled (.net labels a,b,c) transitions and are the observable ones.",
+    "Thesis epsilon2,epsilon3,epsilon6 are unlabelled in the .net (epsilon).",
+    "Thesis epsilon4 is the fault transition; the .net labels it 'f' (fault annotation, unobservable).",
+    "Thesis numbering of state classes differs from Table 4.1 numbering for the p2+p4+p5 / p2+p3+p5 classes (Example 4.1 uses alpha5 for p2+p4+p5 while Table 4.1 lists alpha7)."
+  ]
+}

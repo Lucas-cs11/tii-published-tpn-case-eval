@@ -1,0 +1,385 @@
+{
+ "schema": "tii-tpn-model/1",
+ "id": "control_17P15T",
+ "display_name": "TII-26-7248 illustrative industrial unit (fixed control, unchanged)",
+ "provenance": {
+  "kind": "existing_control",
+  "paper": "TII-26-7248 manuscript illustrative example",
+  "source_url": "/Users/lucas/Library/Mobile Documents/com~apple~CloudDocs/WorkingFiles/\u5728\u6295\u6587\u7ae0/TII_TPN/tpn-illustrative-case/model/case_model.dot",
+  "note": "read-only import; the control repository is never modified",
+  "adaptations": []
+ },
+ "places": [
+  {
+   "id": "p_completed",
+   "initial": 0
+  },
+  {
+   "id": "p_grip_recovery",
+   "initial": 0
+  },
+  {
+   "id": "p_inspecting",
+   "initial": 0
+  },
+  {
+   "id": "p_inspection_free",
+   "initial": 1
+  },
+  {
+   "id": "p_loading",
+   "initial": 0
+  },
+  {
+   "id": "p_machine_free",
+   "initial": 1
+  },
+  {
+   "id": "p_processing",
+   "initial": 0
+  },
+  {
+   "id": "p_raw",
+   "initial": 2
+  },
+  {
+   "id": "p_rework_queue",
+   "initial": 0
+  },
+  {
+   "id": "p_rework_transfer",
+   "initial": 0
+  },
+  {
+   "id": "p_robot_free",
+   "initial": 1
+  },
+  {
+   "id": "p_transferring",
+   "initial": 0
+  },
+  {
+   "id": "p_unloading",
+   "initial": 0
+  },
+  {
+   "id": "p_wait_inspection",
+   "initial": 0
+  },
+  {
+   "id": "p_wait_machine",
+   "initial": 0
+  },
+  {
+   "id": "p_wait_transfer",
+   "initial": 0
+  },
+  {
+   "id": "p_wait_unload",
+   "initial": 0
+  }
+ ],
+ "transitions": [
+  {
+   "id": "t_FinishLoading",
+   "label": "load_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 3,
+   "inputs": {
+    "p_loading": 1
+   },
+   "outputs": {
+    "p_robot_free": 1,
+    "p_wait_machine": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_FinishProcessing",
+   "label": "machining_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 8,
+   "latest": 12,
+   "inputs": {
+    "p_processing": 1
+   },
+   "outputs": {
+    "p_machine_free": 1,
+    "p_wait_transfer": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_FinishReworkTransfer",
+   "label": "rework_returned",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 3,
+   "inputs": {
+    "p_rework_transfer": 1
+   },
+   "outputs": {
+    "p_robot_free": 1,
+    "p_wait_machine": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_FinishTransfer",
+   "label": "transfer_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 3,
+   "inputs": {
+    "p_transferring": 1
+   },
+   "outputs": {
+    "p_robot_free": 1,
+    "p_wait_inspection": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_FinishUnloading",
+   "label": "unload_done",
+   "observable": true,
+   "fault": false,
+   "earliest": 2,
+   "latest": 3,
+   "inputs": {
+    "p_unloading": 1
+   },
+   "outputs": {
+    "p_completed": 1,
+    "p_robot_free": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_GripperSlipFault",
+   "label": "",
+   "observable": false,
+   "fault": true,
+   "earliest": 1,
+   "latest": 3,
+   "inputs": {
+    "p_loading": 1
+   },
+   "outputs": {
+    "p_grip_recovery": 1,
+    "p_robot_free": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_InspectionPass",
+   "label": "inspection_pass",
+   "observable": true,
+   "fault": false,
+   "earliest": 4,
+   "latest": 6,
+   "inputs": {
+    "p_inspecting": 1
+   },
+   "outputs": {
+    "p_inspection_free": 1,
+    "p_wait_unload": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_InspectionRework",
+   "label": "inspection_rework",
+   "observable": true,
+   "fault": false,
+   "earliest": 4,
+   "latest": 6,
+   "inputs": {
+    "p_inspecting": 1
+   },
+   "outputs": {
+    "p_inspection_free": 1,
+    "p_rework_queue": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_RecoverLoading",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 3,
+   "latest": 5,
+   "inputs": {
+    "p_grip_recovery": 1,
+    "p_robot_free": 1
+   },
+   "outputs": {
+    "p_loading": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_StartInspection",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 1,
+   "inputs": {
+    "p_inspection_free": 1,
+    "p_wait_inspection": 1
+   },
+   "outputs": {
+    "p_inspecting": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_StartLoading",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 2,
+   "inputs": {
+    "p_raw": 1,
+    "p_robot_free": 1
+   },
+   "outputs": {
+    "p_loading": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_StartProcessing",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 0,
+   "latest": 1,
+   "inputs": {
+    "p_machine_free": 1,
+    "p_wait_machine": 1
+   },
+   "outputs": {
+    "p_processing": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_StartReworkTransfer",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 2,
+   "inputs": {
+    "p_rework_queue": 1,
+    "p_robot_free": 1
+   },
+   "outputs": {
+    "p_rework_transfer": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_StartTransfer",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 2,
+   "inputs": {
+    "p_robot_free": 1,
+    "p_wait_transfer": 1
+   },
+   "outputs": {
+    "p_transferring": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  },
+  {
+   "id": "t_StartUnloading",
+   "label": "",
+   "observable": false,
+   "fault": false,
+   "earliest": 1,
+   "latest": 2,
+   "inputs": {
+    "p_robot_free": 1,
+    "p_wait_unload": 1
+   },
+   "outputs": {
+    "p_unloading": 1
+   },
+   "read": {},
+   "inhibitor": {},
+   "stopwatch": {},
+   "priority_before": []
+  }
+ ],
+ "finish_markings": [
+  {
+   "p_completed": 2,
+   "p_robot_free": 1,
+   "p_machine_free": 1,
+   "p_inspection_free": 1
+  }
+ ],
+ "special_features": {
+  "read_arcs": false,
+  "inhibitor_arcs": false,
+  "stopwatch_arcs": false,
+  "priority_rules": false,
+  "multi_server": false,
+  "unbounded": false
+ }
+}

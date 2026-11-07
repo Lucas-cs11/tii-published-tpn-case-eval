@@ -1,0 +1,32 @@
+{
+  "schema": "tii-tpn-provenance/1",
+  "note": "Local development copies. sha256/bytes are recomputed from sources/*.net and compared with sources/local_sha256.txt. These entries are NOT authoritative: rules PROTOCOL.md section 0.1 require the GitHub Actions download record (fetched/download_log.json from tools/fetch_sources.py). Refresh with: python pipeline/tina_net.py IN.net OUT.json --provenance fetched/download_log.json",
+  "wangTAC.net": {
+    "kind": "published_original",
+    "source_url": "https://projects.laas.fr/twina/files/wangTAC.net",
+    "sha256": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f",
+    "bytes": 217,
+    "downloaded_utc": null,
+    "http_status": null,
+    "authoritative": false,
+    "expected_sha256": "9b1c53912badd27fd934c6a91048a909bc45bdb49296f0ca07fa3e7b4413831f",
+    "hash_matches_local_sha256_txt": true,
+    "adaptations": [],
+    "local_copy": "sources/wangTAC.net",
+    "refresh_note": "replaced by fetched/download_log.json records in GitHub Actions"
+  },
+  "basileTAC.net": {
+    "kind": "published_original",
+    "source_url": "https://projects.laas.fr/twina/files/basileTAC.net",
+    "sha256": "4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a",
+    "bytes": 203,
+    "downloaded_utc": null,
+    "http_status": null,
+    "authoritative": false,
+    "expected_sha256": "4ebe9d00d2f6c2071711f12a1e931b83250a2608e5fa30b5a5b5cd230744324a",
+    "hash_matches_local_sha256_txt": true,
+    "adaptations": [],
+    "local_copy": "sources/basileTAC.net",
+    "refresh_note": "replaced by fetched/download_log.json records in GitHub Actions"
+  }
+}
