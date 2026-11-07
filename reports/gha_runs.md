@@ -54,3 +54,4 @@ artifacts were regenerated:
 The GHA-produced verification logs in `results/gha/` are kept as the
 authoritative CI evidence from run 42334373373 and are not overwritten by the
 local rebuild.
+| 42339770791 | 2026-11-07T04:45:25Z | `73dbbdc73e22` | auto-recorded | PASS | https://github.com/Lucas-cs11/tii-published-tpn-case-eval/actions/runs/42339770791 |

@@ -1,0 +1,9 @@
+{
+ "run_id": "42339770791",
+ "run_attempt": "1",
+ "repo": "Lucas-cs11/tii-published-tpn-case-eval",
+ "commit": "73dbbdc73e2256773a998e987ca230a1191bee97",
+ "workflow": "evaluate",
+ "utc": "2026-11-07T04:45:12Z",
+ "tina_bin": "/home/runner/work/tii-published-tpn-case-eval/tii-published-tpn-case-eval/tina/tina-4.0.0/bin/tina"
+}
