@@ -55,17 +55,17 @@ jobs:
           export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
           "$TINA_BIN" -p fetched/wangTAC.net | tee tina_parse.log
           grep -q "7 places, 7 transitions, 18 arcs" tina_parse.log
-      - name: Run end-to-end verification
-        run: |
-          set -o pipefail
-          export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
-          python pipeline/verify.py --fetched fetched --out results/verification.json | tee results/verification.log
       - name: Run regression tests
         run: |
           set -o pipefail
           export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
           mkdir -p results/pytest
           python -m pytest tests -q 2>&1 | tee results/pytest.log
+      - name: Run end-to-end verification
+        run: |
+          set -o pipefail
+          export LD_LIBRARY_PATH="${TINA_LIB:-}:$LD_LIBRARY_PATH"
+          python pipeline/verify.py --fetched fetched --out results/verification.json | tee results/verification.log
       - name: Write machine-readable run record
         if: always()
         run: |
