@@ -187,5 +187,6 @@ jobs:
           git add sources/gha_evidence reports/gha_runs.md results/gha 2>/dev/null || true
           if git diff --cached --quiet; then echo "no evidence changes"; else
             git commit -m "ci: authoritative GHA download evidence for run $GITHUB_RUN_ID"
+            git pull --rebase origin main || true
             git push origin HEAD:main
           fi

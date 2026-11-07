@@ -141,11 +141,14 @@ def test_committed_models_match_parser_output():
                 assert a[key] == b[key], (stem, a["id"], key)
         assert committed["special_features"] == parsed["special_features"]
         assert committed["extensions"]["tina_parse"] == parsed["extensions"]["tina_parse"]
-        # local development provenance: hash recorded and compared to the
-        # committed reference hash file
+        # provenance: hash always equals the committed .net bytes;
+        # authoritative=True is allowed once the GHA download record
+        # (sources/gha_evidence/download_log.json) has been merged.
         assert committed["provenance"]["sha256"] == tina_net.sha256_file(net)
         assert committed["provenance"]["bytes"] == net.stat().st_size
-        assert committed["provenance"]["authoritative"] is False
+        if committed["provenance"]["authoritative"]:
+            assert committed["provenance"]["http_status"] == 200
+            assert committed["provenance"]["downloaded_utc"]
         if "hash_matches_local_sha256_txt" in committed["provenance"]:
             assert committed["provenance"]["hash_matches_local_sha256_txt"] is True
 
