@@ -15,8 +15,7 @@ from pathlib import Path
 
 INCLUDE_DIRS = ["sources", "models", "pipeline", "manufacturing", "literature",
                 "reports", "figures", "tests", "tools", "results"]
-INCLUDE_FILES = ["README.md", "PROTOCOL.md", "MANIFEST.sha256",
-                 "reports/GHA_RUNS.json"]
+INCLUDE_FILES = ["README.md", "PROTOCOL.md", "MANIFEST.sha256"]
 EXCLUDE_DIRS = {"__pycache__", ".pytest_cache", ".git"}
 EXCLUDE_SUFFIX = {".pyc", ".tgz", ".dmg", ".zip"}
 
